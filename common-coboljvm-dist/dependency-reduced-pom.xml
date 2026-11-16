@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>cobjvm-pdf-parent</artifactId>
+    <groupId>com.amcpresales</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../cobjvm-pdf-parent/pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>common-coboljvm-dist</artifactId>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.6.2</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <includes>
+                    <include>com/amcpresales/**</include>
+                    <include>**/*.cbldat</include>
+                    <include>**/*_MF_LCTYPE*</include>
+                    <include>META-INF/**</include>
+                  </includes>
+                </filter>
+              </filters>
+              <outputDirectory>${project.basedir}/../BankdemoVSAMAscii/system/loadlib</outputDirectory>
+              <finalName>coboljvm-java-classes</finalName>
+              <shadedArtifactAttached>false</shadedArtifactAttached>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

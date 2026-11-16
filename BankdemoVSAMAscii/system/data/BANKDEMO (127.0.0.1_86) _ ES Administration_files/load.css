@@ -1,0 +1,171 @@
+/*
+ * © Copyright 2021 Micro Focus or one of its affiliates.
+ * The only warranties for products and services of Micro Focus and its affiliates and licensors
+ * (“Micro Focus”) are set forth in the express warranty statements accompanying such products and
+ * services. Nothing herein should be construed as constituting an additional warranty. Micro Focus
+ * shall not be liable for technical or editorial errors or omissions contained herein. The
+ * information contained herein is subject to change without notice.
+ */
+.load-mask-outer {
+  height: 99vh;
+}
+
+.center-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  background-color: transparent;
+  animation-name: spinner-animation;
+  will-change: transform;
+  animation-delay: 500ms;
+  animation-duration: 2500ms;
+  animation-iteration-count: infinite;
+}
+
+.spinner.spinner-large {
+  width: 48px;
+  height: 48px;
+}
+
+.spinner.spinner-large:before {
+  width: 48px;
+  height: 48px;
+  border-top-width: 14.4px;
+  border-right-width: 14.4px;
+  animation-name: spinner-top-animation--large;
+  transform: translateX(7.2px) translateY(-7.2px);
+}
+
+.spinner.spinner-large:after {
+  width: 48px;
+  height: 48px;
+  border-bottom-width: 14.4px;
+  border-left-width: 14.4px;
+  animation-name: spinner-bottom-animation--large;
+  transform: translateX(-7.2px) translateY(7.2px);
+}
+
+.spinner:before {
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  width: 24px;
+  height: 24px;
+  /* Brand Blue */
+  border-top: 7.2px solid #0073E7;
+  border-right: 7.2px solid #0073E7;
+  background-color: transparent;
+  border-radius: 0;
+  transform: translateX(3.6px) translateY(-3.6px);
+  will-change: transform;
+  animation-name: spinner-top-animation;
+  animation-duration: 2500ms;
+  animation-delay: 500ms;
+  animation-iteration-count: infinite;
+}
+
+.spinner:after {
+  box-sizing: border-box;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  /* Brand Blue */
+  border-bottom: 7.2px solid #0073E7;
+  border-left: 7.2px solid #0073E7;
+  background-color: transparent;
+  transform: translateX(-3.6px) translateY(3.6px);
+  will-change: transform;
+  animation-name: spinner-bottom-animation;
+  animation-duration: 2500ms;
+  animation-delay: 500ms;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spinner-animation {
+  0% {
+    transform: rotateZ(0);
+  }
+  8% {
+    transform: rotateZ(0);
+  }
+  60% {
+    transform: rotateZ(360deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes spinner-top-animation {
+  0% {
+    transform: translateX(3.6px) translateY(-3.6px);
+  }
+  12% {
+    transform: translateX(-8.4px) translateY(8.4px);
+  }
+  68% {
+    transform: translateX(-8.4px) translateY(8.4px);
+  }
+  80% {
+    transform: translateX(3.6px) translateY(-3.6px);
+  }
+}
+
+@keyframes spinner-bottom-animation {
+  0% {
+    transform: translateX(-3.6px) translateY(3.6px);
+  }
+  12% {
+    transform: translateX(8.4px) translateY(-8.4px);
+  }
+  68% {
+    transform: translateX(8.4px) translateY(-8.4px);
+  }
+  80% {
+    transform: translateX(-3.6px) translateY(3.6px);
+  }
+}
+
+@keyframes spinner-top-animation--large {
+  0% {
+    transform: translateX(7.2px) translateY(-7.2px);
+  }
+  12% {
+    transform: translateX(-16.8px) translateY(16.8px);
+  }
+  68% {
+    transform: translateX(-16.8px) translateY(16.8px);
+  }
+  80% {
+    transform: translateX(7.2px) translateY(-7.2px);
+  }
+}
+
+@keyframes spinner-bottom-animation--large {
+  0% {
+    transform: translateX(-7.2px) translateY(7.2px);
+  }
+  12% {
+    transform: translateX(16.8px) translateY(-16.8px);
+  }
+  68% {
+    transform: translateX(16.8px) translateY(-16.8px);
+  }
+  80% {
+    transform: translateX(-7.2px) translateY(7.2px);
+  }
+}

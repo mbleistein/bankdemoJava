@@ -1,0 +1,90 @@
+     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+     *-*-*  Rocket Software ESJCL  ASCII  JES2 Version ED12.0_010                              *-*-*
+     *-*-*  Copyright (C) Rocket Software 1997-2024. All rights reserved.                      *-*-*
+     *-*-*  Job: 0001106 Name: COBJDEMO User: SYSAD    Date: 10/06/26 Time: 18:00:50           *-*-*
+     *-*-*  File: $TXRFDIR/SYSAD18005059.T                                                     *-*-*
+     *-*-*  DSN:                                                                               *-*-*
+     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+   1 //COBJDEMO JOB COBJDEMO,COBJDEMO,CLASS=A,MSGCLASS=A,MSGLEVEL=(1,1),
+   2 //  NOTIFY=COBJDEMO
+   3 //EXTRACT  EXEC YBNKEXTV,REQUEST=B0004
+**** JCLCM0301I Procedure YBNKEXTV was expanded using the library SYS1.PROCLIB
+     XXEXTRACT   PROC HIQUAL1='MFI01',HIQUAL2='MFIDEMO',                     00000100
+     XX SOUT='*',REQUEST=''                                                  00000200
+     XX* ******************************************************************  00000300
+     XX* PROC TO EXTRACT BANKS STATEMENT DATA FROM VSAM FILES             *  00000400
+     XX*   //GO  EXEC YBNKEXTV,REQUEST=?????                              *  00000500
+     XX*   WHERE ????? IS:                                                *  00000600
+     XX*   - NULL (ALL DATA EXTRACTED)                                    *  00000700
+     XX*   - ALL (ALL DATA EXTRACTED)                                     *  00000800
+     XX*   - THE 5 CHARACTER CUSTOMER ID TO EXTRACT DATA FOR              *  00000900
+     XX* ******************************************************************  00001000
+     XXEXTRACT  EXEC PGM=ZBNKEXT1,PARM=&REQUEST                              00001100
+     SUBSTITUTION - PGM=ZBNKEXT1,PARM=B0004
+     XX*TEPLIB  DD DSN=&HIQUAL1..&HIQUAL2..LOADLIB,DISP=SHR                  00001200
+     XXSYSOUT   DD SYSOUT=&SOUT                                              00001300
+     SUBSTITUTION - SYSOUT=*
+     XXEXTRACT  DD DSN=&HIQUAL1..&HIQUAL2..BANKEXT1(+1),                     00001400
+     SUBSTITUTION - DSN=MFI01.MFIDEMO.BANKEXT1(+1),
+     XX            DISP=(NEW,CATLG,DELETE),                                  00001500
+     XX            DCB=(RECFM=VB,LRECL=99,BLKSIZE=990),                      00001600
+     XX            UNIT=SYSDA,SPACE=(TRK,(2,1),RLSE)                         00001700
+     XXBNKACC   DD DSN=&HIQUAL1.V.&HIQUAL2..BNKACC,DISP=SHR                  00001800
+     SUBSTITUTION - DSN=MFI01V.MFIDEMO.BNKACC,DISP=SHR
+     XXBNKATYP  DD DSN=&HIQUAL1.V.&HIQUAL2..BNKATYPE,DISP=SHR                00001900
+     SUBSTITUTION - DSN=MFI01V.MFIDEMO.BNKATYPE,DISP=SHR
+     XXBNKCUST  DD DSN=&HIQUAL1.V.&HIQUAL2..BNKCUST,DISP=SHR                 00002000
+     SUBSTITUTION - DSN=MFI01V.MFIDEMO.BNKCUST,DISP=SHR
+     XXBNKTXN   DD DSN=&HIQUAL1.V.&HIQUAL2..BNKTXN,DISP=SHR                  00002100
+     SUBSTITUTION - DSN=MFI01V.MFIDEMO.BNKTXN,DISP=SHR
+     XX*                                                                     00002200
+     XX* *** $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm     00002300
+   4 //SORT     EXEC YBNKSRT1,GEN='+1'
+**** JCLCM0301I Procedure YBNKSRT1 was expanded using the library SYS1.PROCLIB
+     XXSORT    PROC HIQUAL1='MFI01',HIQUAL2='MFIDEMO',
+     XX SOUT='*',GEN='0',MBR=KBNKSRT1
+     XX* ******************************************************************
+     XX* PROC TO SORT BANK STATEMENT DATA                                 *
+     XX*   //GO  EXEC YBNKSRT1                                            *
+     XX* ******************************************************************
+     XXSORT     EXEC PGM=SORT
+     XX*//EXITLIB  DD DSN=&HIQUAL1..&HIQUAL2..LOADLIB,DISP=SHR
+     XXSYSOUT   DD SYSOUT=&SOUT
+     SUBSTITUTION - SYSOUT=*
+     XXSORTIN   DD DSN=&HIQUAL1..&HIQUAL2..BANKEXT1(&GEN),DISP=SHR
+     SUBSTITUTION - DSN=MFI01.MFIDEMO.BANKEXT1(+1),DISP=SHR
+     XXSORTOUT  DD DSN=&HIQUAL1..&HIQUAL2..BANKSRT1(+1),
+     SUBSTITUTION - DSN=MFI01.MFIDEMO.BANKSRT1(+1),
+     XX*   - NULL (ALL DATA EXTRACTED)                                    *
+     XX            DISP=(NEW,CATLG,DELETE),
+     XX            DCB=(RECFM=VB,LRECL=99,BLKSIZE=990),
+     XX            UNIT=SYSDA,SPACE=(TRK,(2,1),RLSE)
+     XXSYSIN    DD DSN=&HIQUAL1..&HIQUAL2..CTLCARDS(&MBR),DISP=SHR
+     SUBSTITUTION - DSN=MFI01.MFIDEMO.CTLCARDS(KBNKSRT1),DISP=SHR
+     XX*
+     XX* *** $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm
+   5 //PRINT    EXEC JBNKPRT1,GEN='+1',SOUT=A
+**** JCLCM0301I Procedure JBNKPRT1 was expanded using the library SYS1.PROCLIB
+     XXPRINT    PROC HIQUAL1='MFI01',HIQUAL2='MFIDEMO',
+     XX         SOUT='*'
+     XXPRINT    EXEC PGM=CJBANK
+     XXEXTRACT  DD DSN=&HIQUAL1..&HIQUAL2..BANKSRT1(&GEN),DISP=SHR
+     SUBSTITUTION - DSN=MFI01.MFIDEMO.BANKSRT1(+1),DISP=SHR
+     XXPRINTOUT DD SYSOUT=&SOUT
+     SUBSTITUTION - SYSOUT=A
+     XXSTDOUT   DD SYSOUT=*
+     XXSYSOUT   DD SYSOUT=*
+     XXSTDERR   DD SYSOUT=*
+     XXCEEOPTS  DD *
+     XX* ENVAR("JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,     +
+     XX* server=n,suspend=y,address=localhost:8000")
+
+**** JCLCM0437E UNEXPECTED STATEMENT
+     XX* ENVAR("JAVA_TOOL_OPTIONS=")
+     XX*
+     XX* *** $ Version 12.0 sequenced on Friday 3 October 2026
+   6 //*
+   7 //* *** $ Version 12.0 sequenced on Friday 3 October 2026
+
+**** JCLCM0172E JOB  FAILED  - JCL ERROR

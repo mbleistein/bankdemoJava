@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>com.amcpresales</groupId>
+        <artifactId>cobjvm-pdf-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../cobjvm-pdf-parent/pom.xml</relativePath>
+    </parent>   
+    
+    <artifactId>BankdemoBatchReport</artifactId>
+    <name>BankdemoBatchReport</name>
+    <description>Java Classes to Begin Batch Report Processing</description>
+    
+    <properties>
+  		<product.install.dir>C:\RocketSoftware\ED</product.install.dir>
+    </properties> 
+     
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<!-- Packaging exclude unnecessary files -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+     		    <version>3.4.2</version>				
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <version>3.11.0</version>
+			    <executions>
+			        <execution>
+			            <?m2e ignore?>
+			            <id>copy-dependencies</id>
+			            <phase>package</phase>
+			            <goals>
+			                <goal>copy-dependencies</goal>
+			            </goals>
+			            <configuration>
+			                <!-- Update this path to point to your single workspace folder -->
+			                <outputDirectory>C:\Users\mbleistein\workspaces\bankdemoJava\externalJars</outputDirectory>
+			                <overWriteReleases>false</overWriteReleases>
+			                <overWriteSnapshots>false</overWriteSnapshots>
+			                <overWriteIfNewer>true</overWriteIfNewer>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>			
+		</plugins>        
+    </build>
+
+    <dependencies>
+        <!-- Paste this exact block -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.4.0</version>
+        </dependency>        
+    
+        <!-- 2. Second dependent COBOL JVM project -->
+        <dependency>
+            <groupId>com.amcpresales</groupId>
+            <artifactId>coboljvm-loanamortclient</artifactId> 
+            <version>${project.version}</version>
+        </dependency>
+    
+        <!-- 3. Third dependent COBOL JVM project -->
+        <dependency>
+            <groupId>com.amcpresales</groupId>
+            <artifactId>coboljvm-pdf</artifactId>
+            <version>${project.version}</version>
+        </dependency>   
+    
+        <dependency>
+            <groupId>com.amcpresales</groupId>
+            <artifactId>bankdemoBatchJVM</artifactId>
+            <version>${project.version}</version>
+        </dependency>  
+    	<dependency>
+    	    <groupId>com.rocketsoftware</groupId>
+    	    <artifactId>mfcobol</artifactId>
+    	    <version>12.0.0</version>
+    	    <scope>provided</scope>
+    	</dependency>  
+    	<dependency>
+    	    <groupId>com.rocketsoftware</groupId>
+    	    <artifactId>mfcobolrts</artifactId>
+    	    <version>12.0.0</version>
+    	    <scope>provided</scope>
+    	</dependency> 
+    	<dependency>
+    	    <groupId>com.rocketsoftware</groupId>
+    	    <artifactId>esjos</artifactId>
+    	    <version>12.0.0</version>
+    	    <scope>provided</scope>
+    	</dependency>    
+    </dependencies>  
+</project>
+

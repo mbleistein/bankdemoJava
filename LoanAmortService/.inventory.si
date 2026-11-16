@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ImtkSi xmlns="http://xml.microfocus.com/schema/imtksi/v1.0/mfimtksi.xsd">
+  <restWebServiceMapping mappingName="AmortService">
+    <restWebServiceProperties endpointUrl="http://localhost:9103" wsClientOutputDir="" basePath="/finance" version="1.0">
+      <deploymentServer deployerAddress="172.25.192.19:57109" deployerName="Deployer" enterpriseServerRuntimeEnvironmentEnabled="false" serverName="AMORT64" serviceName="AmortService" transactionManagement="applicationManaged">
+        <security prompt="false"/>
+      </deploymentServer>
+      <applicationFiles deployedApplicationPath="C:\Users\mbleistein\workspaces\bankdemojava\LoanAmortService\bin" fileStatus="deployed"/>
+    </restWebServiceProperties>
+  </restWebServiceMapping>
+</ImtkSi>

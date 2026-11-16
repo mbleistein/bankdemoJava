@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="bankdemoBatchJVM" uuid="6dc353c3-cde6-40dc-9531-bbee9b2c29bf" version="6.0">
+   <settings>
+      <build-precedence-paths>
+         <path enabled="true" name="/bankdemoBatchJVM/src" type="mfpath"/>
+      </build-precedence-paths>
+      <dependent-projects>
+         <dependent-project name="coboljvm_cryptapis"/>
+         <dependent-project name="coboljvm-loanamortclient"/>
+         <dependent-project name="coboljvm-pdf"/>
+      </dependent-projects>
+      <copybook-paths>
+         <path enabled="true" name="/bankdemoBatchJVM" type="mfpath"/>
+         <path enabled="true" name="/bankdemoBatchJVM/src" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/src/com" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/src/com/amcpresales" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/src/com/amcpresales/bankdemo" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/data" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/reports" type="mfpath"/>
+         <path enabled="true" name="/coboljvm_cryptapis" type="mfpath"/>
+         <path enabled="true" name="/coboljvm-loanamortclient" type="mfpath"/>
+         <path enabled="true" name="/coboljvm-pdf" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target/generated-sources" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target/generated-sources/annotations" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target/maven-status" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target/maven-status/maven-compiler-plugin" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target/maven-status/maven-compiler-plugin/compile" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target/maven-status/maven-compiler-plugin/compile/default-compile" type="mfpath"/>
+         <path enabled="true" name="/bankdemoBatchJVM/cpy" type="mfpath"/>
+         <path enabled="false" name="/bankdemoBatchJVM/target/maven-archiver" type="mfpath"/>
+      </copybook-paths>
+      <configurations default="New Configuration" linkedWith="2017">
+         <configuration commonDirectivesConfigData="" commonDirectivesState="hybrid" description="New Configuration" type="jvm">
+            <targetdir name=".bin"/>
+         </configuration>
+      </configurations>
+      <extra-resource-files/>
+   </settings>
+   <files>
+      <filetype type="cobol">
+         <file compile="true" path="src/com/amcpresales/bankdemo/UDATECNV.cbl"/>
+         <file compile="true" path="src/com/amcpresales/bankdemo/ZBNKPRT1.cbl"/>
+      </filetype>
+      <filetype type="cobol.copybook"/>
+      <filetype type="rocket.commondirectives">
+         <file compile="true" path="target/classes/META-INF/MANIFEST.MF"/>
+      </filetype>
+      <folders>
+         <folder compile="true" path="target/maven-archiver"/>
+         <folder compile="true" path="src/com/amcpresales/bankdemo"/>
+         <folder compile="true" path="target/classes/META-INF/maven/com.amcpresales/bankdemo"/>
+      </folders>
+   </files>
+</project>

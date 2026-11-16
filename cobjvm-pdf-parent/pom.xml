@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.amcpresales</groupId>
+  <artifactId>cobjvm-pdf-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <modules>
+      <module>../coboljvm-pdf</module>
+      <module>../coboljvm-loanamortclient</module> 
+      <module>../coboljvm_cryptapis</module>  
+      <module>../bankdemoBatchJVM</module> 
+      <module>../BankdemoBatchReport</module>      
+      <module>../common-coboljvm-dist</module>                          
+  </modules>  
+</project>

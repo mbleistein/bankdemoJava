@@ -1,0 +1,20 @@
+<project name="PostBuildTask" default="post-build">
+    
+    <!-- Define your source directory (where Eclipse outputs compiled .class files) -->
+    <!-- Define your destination directory where you want to copy the files -->
+    <property name="src.dir" value="${basedir}/bin"/>
+    <property name="curr.user" value="C:/Users/mbleistein/"/>
+    <property name="dest.dir" value="workspaces/bankdemoJava/BankdemoVSAMAscii/system/loadlib"/>
+
+    <target name="post-build">
+        <echo message="Copying compiled BankReport.class file to ${dest.dir}..."/>
+        
+        <!-- Copy all files from the Eclipse build directory to the target directory -->
+        <copy todir="${curr.user}${dest.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </copy>
+        
+    </target>
+</project>

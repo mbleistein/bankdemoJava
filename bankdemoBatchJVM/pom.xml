@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.amcpresales</groupId>
+        <artifactId>cobjvm-pdf-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../cobjvm-pdf-parent/pom.xml</relativePath>
+    </parent> 
+
+	<artifactId>bankdemoBatchJVM</artifactId>
+	<name>bankdemoBatchJVM</name>
+	
+	<properties>
+		<product.install.dir>C:\RocketSoftware\ED</product.install.dir>
+	</properties>
+
+	<!-- product.install.dir could be updated with ${env.COBDIR}, if COBIR is set -->
+	 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>microfocus-repo</id>
+			<name>Rocket Software Repository</name>
+			<url>file://${product.install.dir}/etc/m2repo</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<!-- RocketSoftware Maven Plugin -->
+			<plugin>
+				<groupId>com.microfocus.maven</groupId>
+				<artifactId>microfocus-maven-plugin</artifactId>
+				<version>1.1.0</version>				
+				<executions>
+					<execution>
+						<goals>
+							<goal>cobolDependencies</goal> <!-- in validate phase -->
+							<goal>cobolCompile</goal> <!-- in compile phase -->
+						</goals>
+	                    <configuration>
+	                        <!-- Specify your copybook lookup locations here -->
+	                        <copypaths>
+	                            <copypath>${project.basedir}/cpy</copypath>
+	                        </copypaths>
+	                    </configuration>						
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Packaging exclude unnecessary files -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+     		    <version>3.4.2</version>				
+				<configuration>
+					<excludes>
+						<exclude>**/*.tlog</exclude>
+						<exclude>**/*.idy</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <version>3.11.0</version>
+			    <executions>
+			        <execution>
+			            <id>copy-dependencies</id>
+			            <phase>package</phase>
+			            <goals>
+			                <goal>copy-dependencies</goal>
+			            </goals>
+			            <configuration>
+			                <!-- Update this path to point to your single workspace folder -->
+			                <outputDirectory>C:\Users\mbleistein\workspaces\bankdemoJava\externalJars</outputDirectory>
+			                <overWriteReleases>false</overWriteReleases>
+			                <overWriteSnapshots>false</overWriteSnapshots>
+			                <overWriteIfNewer>true</overWriteIfNewer>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>			
+		</plugins>
+	</build>
+<dependencies>
+    <!-- Paste this exact block -->
+    <dependency>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.4.0</version>
+    </dependency>        
+   <dependency>
+       <groupId>org.apache.pdfbox</groupId>
+       <artifactId>pdfbox</artifactId>
+       <version>3.0.8</version>
+   </dependency>
+    <dependency>
+        <groupId>com.amcpresales</groupId>
+        <artifactId>coboljvm_cryptapis</artifactId> 
+        <version>${project.version}</version>
+    </dependency>
+
+    <!-- 2. Second dependent COBOL JVM project -->
+    <dependency>
+        <groupId>com.amcpresales</groupId>
+        <artifactId>coboljvm-loanamortclient</artifactId> 
+        <version>${project.version}</version>
+    </dependency>
+
+    <!-- 3. Third dependent COBOL JVM project -->
+    <dependency>
+        <groupId>com.amcpresales</groupId>
+        <artifactId>coboljvm-pdf</artifactId>
+        <version>${project.version}</version>
+    </dependency>   
+   
+</dependencies>
+</project>

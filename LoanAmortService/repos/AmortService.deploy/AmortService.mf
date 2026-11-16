@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Manifest>
+    <Application Name="LOANAMORT" ServiceType="RESTJ" BitMode="64" Path="C:\Users\mbleistein\workspaces\bankdemojava\LoanAmortService\bin"/>
+    <FileList>
+        <File>C:\Users\mbleistein\workspaces\bankdemoJava\LoanAmortService\repos\AmortService.deploy\AmortService.idt</File>
+<File>C:\Users\mbleistein\workspaces\bankdemoJava\LoanAmortService\repos\AmortService.deploy\AmortService.json</File>
+    </FileList>
+    <Service Qualifier="/finance/AmortService/1.0" Name="C:\Users\mbleistein\workspaces\bankdemoJava\LoanAmortService\repos\AmortService" XManagement="Application">
+        <Operation>AmortInfo</Operation>
+    </Service>
+    <Headers>
+        <AllowCredentials>false</AllowCredentials>
+    </Headers>
+</Manifest>

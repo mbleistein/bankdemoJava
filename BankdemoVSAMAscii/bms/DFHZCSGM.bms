@@ -1,0 +1,49 @@
+*********************************************************************** 
+*                                                                     * 
+*   Copyright (C) 1998-2010 Micro Focus. All Rights Reserved.         * 
+*   This demonstration program is provided for use by users           * 
+*   of Micro Focus products and may be used, modified and             * 
+*   distributed as part of your application provided that             * 
+*   you properly acknowledge the copyright of Micro Focus             * 
+*   in this material.                                                 * 
+*                                                                     * 
+*********************************************************************** 
+DFHZSGM DFHMSD BASE=MAPAREA,                                           -
+               LANG=COBOL,                                             -
+               MODE=INOUT,                                             -
+               TIOAPFX=YES,                                            -
+               TYPE=&&SYSPARM 
+CSGM    DFHMDI DSATTS=(COLOR,HILIGHT,PS,VALIDN),                       -
+               MAPATTS=(COLOR,HILIGHT,PS,VALIDN),                      -
+               SIZE=(24,80) 
+VAR01   DFHMDF ATTRB=(ASKIP,FSET,NORM),                                -
+               COLOR=GREEN,                                            -
+               LENGTH=20,                                              -
+               POS=(1,55),                                             -
+               INITIAL='SYSID HH:MM:SS' 
+TXT00   DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               COLOR=GREEN,                                            -
+               LENGTH=39,                                              -
+               POS=(8,16),                                             -
+               INITIAL='     Bankdemo Region with VSAM         ' 
+        DFHMDF COLOR=GREEN,                                            -
+               LENGTH=57,                                              -
+               POS=(12,12),                                            -
+               INITIAL='***********************************************-
+               **********' 
+TXT06   DFHMDF ATTRB=(ASKIP,NORM),                                     -
+               COLOR=GREEN,                                            -
+               LENGTH=61,                                              -
+               POS=(13,12),                                            -
+               INITIAL='*        Micro Focus Enterprise Server         -
+                        *    ' 
+        DFHMDF COLOR=GREEN,                                            -
+               LENGTH=57,                                              -
+               POS=(14,12),                                            -
+               INITIAL='***********************************************-
+               **********' 
+        DFHMSD TYPE=FINAL
+*                                                                       
+* $ Version 5.99c sequenced on Wednesday 3 Mar 2011 at 1:00pm           
+*                                                                       
+        END

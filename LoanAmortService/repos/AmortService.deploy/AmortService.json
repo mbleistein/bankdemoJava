@@ -1,0 +1,170 @@
+{
+  "openapi" : "3.0.0",
+  "info" : 
+  {
+    "title" : "AmortService",
+    "description" : "Rocket Software Enterprise Developer - This generated Open API document is provided 'as is' and without any warranties of any kind, and may be used by licensee solely for the purposes of describing a REST API. Rocket Software shall not be responsible for and hereby disclaims any liabilities that may result from licensee's use of or modifications to this generated Open API document.",
+    "version" : "1.0.0"
+  },
+  "servers" : 
+  [
+    {
+      "url" : "http://localhost:9103/finance/AmortService/1.0",
+      "description" : "Base URL"
+    }
+  ],
+  "paths" : 
+  {
+    "/AmortInfo" : 
+    {
+      "get" : 
+      {
+        "operationId" : "AmortInfo",
+        "parameters" : 
+        [
+          {
+            "name" : "P",
+            "in" : "query",
+            "schema" : 
+            {
+              "type" : "integer"
+            }
+          },
+          {
+            "name" : "T",
+            "in" : "query",
+            "schema" : 
+            {
+              "type" : "integer"
+            }
+          },
+          {
+            "name" : "R",
+            "in" : "query",
+            "schema" : 
+            {
+              "type" : "integer"
+            }
+          }
+        ],
+        "responses" : 
+        {
+          "200" : 
+          {
+            "description" : "OK",
+            "content" : 
+            {
+              "application/json" : 
+              {
+                "schema" : 
+                {
+                  "type" : "object",
+                  "properties" : 
+                  {
+                    "PAYMENTS" : 
+                    {
+                      "type" : "array",
+                      "minItems" : 0,
+                      "maxItems" : 480,
+                      "items" : 
+                      {
+                        "type" : "object",
+                        "properties" : 
+                        {
+                          "OUTINTPAID" : 
+                          {
+                            "type" : "number"
+                          },
+                          "OUTPRINCPAID" : 
+                          {
+                            "type" : "number"
+                          },
+                          "OUTPAYMENT" : 
+                          {
+                            "type" : "number"
+                          },
+                          "OUTBALANCE" : 
+                          {
+                            "type" : "number"
+                          }
+                        }
+                      }
+                    },
+                    "OUTTOTINTPAID" : 
+                    {
+                      "type" : "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default" : 
+          {
+            "description" : "Error",
+            "content" : 
+            {
+              "application/json" : 
+              {
+                "schema" : 
+                {
+                  "$ref" : "#/components/schemas/faultSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : 
+  {
+    "schemas" : 
+    {
+      "faultSchema" : 
+      {
+        "type" : "object",
+        "properties" : 
+        {
+          "mffault" : 
+          {
+            "type" : "object",
+            "properties" : 
+            {
+              "faultcode" : 
+              {
+                "type" : "string"
+              },
+              "faultstring" : 
+              {
+                "type" : "string"
+              },
+              "detail" : 
+              {
+                "type" : "object",
+                "properties" : 
+                {
+                  "errordetail" : 
+                  {
+                    "type" : "object",
+                    "properties" : 
+                    {
+                      "errorcode" : 
+                      {
+                        "type" : "string"
+                      },
+                      "errortext" : 
+                      {
+                        "type" : "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

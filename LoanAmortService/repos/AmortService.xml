@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<service name="AmortService" programName="LOANAMORT" implementation="rest" dataDictFilename="LOANAMORT.xml" exitProgramName="" xmlns="http://xml.microfocus.com/schema/rest/v1.0/mfrest.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xml.microfocus.com/schema/rest/v1.0/mfrest.xsd http://xml.microfocus.com/schema/rest/v1.0/mfrest.xsd" >
+	<properties>
+		<property name="Version" value="2"/>
+	</properties>
+	<parameterTypeDefs>
+	</parameterTypeDefs>
+	<operations>
+		<operation name="AmortInfo" entryPoint="LOANAMORT" exitPoints="0" httpMethod="GET">
+			<hiddenParameters>
+				<hiddenParameter item="LOANINFO.LOANTERM" value="0" />
+			</hiddenParameters>
+			<parameters>
+				<parameter name="P" dataType="integer" byType="in" in="query" >
+					<mappings>
+						<mapping item="LOANINFO.PRINCIPAL"  />
+					</mappings>
+				</parameter>
+				<parameter name="T" dataType="integer" byType="in" in="query" >
+					<mappings>
+						<mapping item="LOANINFO.LOANTERM"  />
+					</mappings>
+				</parameter>
+				<parameter name="R" dataType="integer" byType="in" in="query" >
+					<mappings>
+						<mapping item="LOANINFO.RATE"  />
+					</mappings>
+				</parameter>
+				<parameter name="OUTDATA" byType="out" in="body" >
+					<field name="PAYMENTS"  occurs="480"  >
+						<field name="OUTINTPAID" dataType="number"  >
+							<mappings>
+								<mapping item="OUTDATA.PAYMENTS.OUTINTPAID(*)"  subscript="*"  />
+							</mappings>
+						</field>
+						<field name="OUTPRINCPAID" dataType="number"  >
+							<mappings>
+								<mapping item="OUTDATA.PAYMENTS.OUTPRINCPAID(*)"  subscript="*"  />
+							</mappings>
+						</field>
+						<field name="OUTPAYMENT" dataType="number"  >
+							<mappings>
+								<mapping item="OUTDATA.PAYMENTS.OUTPAYMENT(*)"  subscript="*"  />
+							</mappings>
+						</field>
+						<field name="OUTBALANCE" dataType="number"  >
+							<mappings>
+								<mapping item="OUTDATA.PAYMENTS.OUTBALANCE(*)"  subscript="*"  />
+							</mappings>
+						</field>
+					</field>
+					<field name="OUTTOTINTPAID" dataType="number"  >
+						<mappings>
+							<mapping item="OUTDATA.OUTTOTINTPAID"  />
+						</mappings>
+					</field>
+				</parameter>
+			</parameters>
+		</operation>
+	</operations>
+</service>

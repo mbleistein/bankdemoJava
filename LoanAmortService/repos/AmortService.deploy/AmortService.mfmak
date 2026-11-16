@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Dummy>
+    <project name="AmortService" basedir="C:\Users\mbleistein\workspaces\bankdemoJava\LoanAmortService\repos\AmortService.deploy">
+        <targets>
+            <package action="createdf" name="AmortService">
+                <file name="C:\Users\mbleistein\workspaces\bankdemoJava\LoanAmortService\repos\AmortService.deploy\AmortService.mf"/>
+                <file name="C:\Users\mbleistein\workspaces\bankdemoJava\LoanAmortService\repos\AmortService.deploy\AmortService.idt"/>
+                <file name="C:\Users\mbleistein\workspaces\bankdemoJava\LoanAmortService\repos\AmortService.deploy\AmortService.json"/>
+            </package>
+        </targets>
+    </project>
+</Dummy>

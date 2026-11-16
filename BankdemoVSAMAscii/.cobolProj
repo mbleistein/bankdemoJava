@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="BankdemoVSAMAscii" uuid="c02eb255-ddbb-4b7a-9ada-7b1554f84dbc" version="6.0">
+   <settings>
+      <copybook-paths>
+         <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/bms" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/cbl" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/ASCII" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/LinuxData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/WindowsData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/prc" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data/BANKDEMO (127.0.0.1_86) _ ES Administration_files" type="mfpath"/>
+      </copybook-paths>
+      <build-precedence-paths>
+         <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/bms" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/cbl" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/data/ASCII" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/data/LinuxData" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/data/WindowsData" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/prc" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/data" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/data/BANKDEMO (127.0.0.1_86) _ ES Administration_files" type="mfpath"/>
+      </build-precedence-paths>
+      <configurations default="New Configuration" linkedWith="2017">
+         <configuration commonDirectivesConfigData="" commonDirectivesState="off" description="New Configuration" type="all_dll">
+            <targetdir name="BankdemoVSAMAscii"/>
+            <application_configuration>
+               <cobol_switches/>
+               <rts_switches>
+                  <rts_switch name="A" value="on" index="1"/>
+                  <rts_switch name="D" value="off" index="0"/>
+                  <rts_switch name="F" value="on" index="0"/>
+                  <rts_switch name="I" value="off" index="2"/>
+                  <rts_switch name="O" value="on" index="0"/>
+                  <rts_switch name="S" value="off" index="5"/>
+               </rts_switches>
+               <deployment>
+                  <tunable name="reuse_container" value="true" index="0"/>
+                  <tunable name="reuse_container_after_error" value="true" index="0"/>
+                  <tunable name="app_always_exits" value="true" index="0"/>
+                  <tunable name="output_filtering_enabled" value="true" index="0"/>
+               </deployment>
+               <envvars/>
+               <envScriptParameters></envScriptParameters>
+               <envScriptPath></envScriptPath>
+               <inheritBuildEnv>false</inheritBuildEnv>
+               <tunables>
+                  <tunable name="screen_lines" value="25" index="0"/>
+                  <tunable name="screen_cols" value="80" index="0"/>
+                  <tunable name="default_cancel_mode" value="2" index="0"/>
+               </tunables>
+            </application_configuration>
+            <link_settings>
+               <options>
+                  <option id="targetName" name="linkSettings" value="BankdemoVSAMAscii"/>
+                  <option id="applicationType" name="linkSettings" value="console"/>
+                  <option id="outputDirectory" name="linkSettings" value="system/loadlib"/>
+                  <option id="entryPoint" name="linkSettings" value=""/>
+                  <option id="type" name="linkSettings" value="all_dll"/>
+                  <option id="threadedRts" name="linkSettings" value="threadedRts"/>
+                  <option id="runtimeModel" name="linkSettings" value="shared"/>
+                  <option id="platform" name="linkSettings" value="Windows"/>
+                  <option id="bitism" name="linkSettings" value="64 bit"/>
+               </options>
+               <additional_files/>
+            </link_settings>
+            <deploy_settings>
+               <options>
+                  <option id="deployFolder" name="deploySettings" value="deploy"/>
+                  <option id="cleanAllowed" name="deploySettings" value="cleanAllowed"/>
+                  <option id="deployFiles" name="deploySettings" value=""/>
+                  <option id="deployPatterns" name="deploySettings" value="New_Configuration.bin/*${exeext}"/>
+               </options>
+            </deploy_settings>
+         </configuration>
+      </configurations>
+      <ims_settings>
+         <options/>
+         <generatedFileDir name=""/>
+         <imsDatabaseDir name=""/>
+      </ims_settings>
+      <imscopy-paths>
+         <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/bms" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/cbl" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/ASCII" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/LinuxData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/WindowsData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/prc" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data/BANKDEMO (127.0.0.1_86) _ ES Administration_files" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib/reports" type="mfpath"/>
+      </imscopy-paths>
+      <jcl-include-paths>
+         <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/bms" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/cbl" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/ASCII" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/LinuxData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/WindowsData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/prc" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data/BANKDEMO (127.0.0.1_86) _ ES Administration_files" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib/reports" type="mfpath"/>
+      </jcl-include-paths>
+      <asmmacro-paths>
+         <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/bms" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/cbl" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/ASCII" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/LinuxData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data/WindowsData" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/prc" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/data/BANKDEMO (127.0.0.1_86) _ ES Administration_files" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib/reports" type="mfpath"/>
+      </asmmacro-paths>
+      <dependent-projects/>
+      <asm_link_settings>
+         <options>
+            <option id="link_create_debug_info" name="mf370lnk" value="ANIM"/>
+            <option id="link_mark_reentrant" name="mf370lnk" value="RENT"/>
+            <option id="link_addressing_mode" name="mf370lnk" value="AMODE(31)"/>
+            <option id="link_residency_mode" name="mf370lnk" value="RMODE(31)"/>
+            <option id="link_generate_listing" name="mf370lnk" value="NOLIST"/>
+            <option id="link_mark_reusable" name="mf370lnk" value="REUS"/>
+            <option id="link_linker_output" name="mf370lnk" value="OMF(390)"/>
+            <option id="link_resolve_external" name="mf370lnk" value="CALL"/>
+         </options>
+      </asm_link_settings>
+   </settings>
+   <files>
+      <filetype type="macro"/>
+      <filetype type="cobol">
+         <file compile="true" path="cbl/BBANK10P.cbl"/>
+         <file compile="true" path="cbl/BBANK20P.cbl"/>
+         <file compile="true" path="cbl/BBANK30P.cbl"/>
+         <file compile="true" path="cbl/BBANK35P.cbl"/>
+         <file compile="true" path="cbl/BBANK40P.cbl"/>
+         <file compile="true" path="cbl/BBANK50P.cbl"/>
+         <file compile="true" path="cbl/BBANK60P.cbl"/>
+         <file compile="true" path="cbl/BBANK70P.cbl"/>
+         <file compile="true" path="cbl/BBANK80P.cbl"/>
+         <file compile="true" path="cbl/BBANK90P.cbl"/>
+         <file compile="true" path="cbl/BBANK99P.cbl"/>
+         <file compile="true" path="cbl/BBANKZZP.cbl"/>
+         <file compile="true" path="cbl/BCASH00P.cbl"/>
+         <file compile="true" path="cbl/BCASH01P.cbl"/>
+         <file compile="true" path="cbl/BCASH02P.cbl"/>
+         <file compile="true" path="cbl/BCASH03P.cbl"/>
+         <file compile="true" path="cbl/BDEMO10P.cbl"/>
+         <file compile="true" path="cbl/BDEMO99P.cbl"/>
+         <file compile="true" path="cbl/CJBANK.cbl"/>
+         <file compile="true" path="cbl/DBANK01P.cbl"/>
+         <file compile="true" path="cbl/DBANK02P.cbl"/>
+         <file compile="true" path="cbl/DBANK03P.cbl"/>
+         <file compile="true" path="cbl/DBANK04P.cbl"/>
+         <file compile="true" path="cbl/DBANK05P.cbl"/>
+         <file compile="true" path="cbl/DBANK06P.cbl"/>
+         <file compile="true" path="cbl/DBANK07P.cbl"/>
+         <file compile="true" path="cbl/DBANK08P.cbl"/>
+         <file compile="true" path="cbl/DBANK09P.cbl"/>
+         <file compile="true" path="cbl/DBANK11P.cbl"/>
+         <file compile="true" path="cbl/DBANK51P.cbl"/>
+         <file compile="true" path="cbl/DBANK52P.cbl"/>
+         <file compile="true" path="cbl/DBANKIOP.cbl"/>
+         <file compile="true" path="cbl/DCASH01P.cbl"/>
+         <file compile="true" path="cbl/DCASH02P.cbl"/>
+         <file compile="true" path="cbl/DHELP01P.cbl"/>
+         <file compile="true" path="cbl/ENQ1.cbl"/>
+         <file compile="true" path="cbl/ENQ2.cbl"/>
+         <file compile="true" path="cbl/HELLOJAV.cbl"/>
+         <file compile="true" path="cbl/SBANK00P.cbl"/>
+         <file compile="true" path="cbl/SBANK10P.cbl"/>
+         <file compile="true" path="cbl/SBANK20P.cbl"/>
+         <file compile="true" path="cbl/SBANK30P.cbl"/>
+         <file compile="true" path="cbl/SBANK35P.cbl"/>
+         <file compile="true" path="cbl/SBANK40P.cbl"/>
+         <file compile="true" path="cbl/SBANK50P.cbl"/>
+         <file compile="true" path="cbl/SBANK60P.cbl"/>
+         <file compile="true" path="cbl/SBANK70P.cbl"/>
+         <file compile="true" path="cbl/SBANK80P.cbl"/>
+         <file compile="true" path="cbl/SBANK90P.cbl"/>
+         <file compile="true" path="cbl/SBANK99P.cbl"/>
+         <file compile="true" path="cbl/SBANKZZP.cbl"/>
+         <file compile="true" path="cbl/SCASH00P.cbl"/>
+         <file compile="true" path="cbl/SCASHDRV.cbl"/>
+         <file compile="true" path="cbl/SCHAR00P.cbl"/>
+         <file compile="true" path="cbl/SCUSTOMP.cbl"/>
+         <file compile="true" path="cbl/SDEMO00P.cbl"/>
+         <file compile="true" path="cbl/SDEMO10P.cbl"/>
+         <file compile="true" path="cbl/SDEMO99P.cbl"/>
+         <file compile="true" path="cbl/SPSWD01P.cbl"/>
+         <file compile="true" path="cbl/SSECUREP.cbl"/>
+         <file compile="true" path="cbl/SSTMT01P.cbl"/>
+         <file compile="true" path="cbl/STRAC00P.cbl"/>
+         <file compile="true" path="cbl/SVERSONP.cbl"/>
+         <file compile="true" path="cbl/TESTTIME.cbl"/>
+         <file compile="true" path="cbl/UDATECNV.cbl"/>
+         <file compile="true" path="cbl/UTWOSCMP.cbl"/>
+         <file compile="true" path="cbl/ZBANKULP.cbl"/>
+         <file compile="true" path="cbl/ZBNKE15.cbl"/>
+         <file compile="true" path="cbl/ZBNKE35.cbl"/>
+         <file compile="true" path="cbl/ZBNKEXT1.cbl"/>
+         <file compile="true" path="cbl/ZBNKLOAD.cbl"/>
+         <file compile="true" path="cbl/ZBNKPRT1.cbl"/>
+         <file compile="true" path="cbl/ZBNKPRT2.cbl"/>
+      </filetype>
+      <filetype type="asm"/>
+      <filetype type="psb"/>
+      <filetype type="jcl">
+         <file compile="true" path="jcl/HELLOJAV.jcl"/>
+         <file compile="true" path="jcl/PYDEMO.jcl"/>
+         <file compile="true" path="jcl/ZBNKCOBJ.jcl"/>
+         <file compile="true" path="jcl/ZBNKSTMT.jcl"/>
+         <file compile="true" path="system/catalog/prc/YBATTSO.prc"/>
+         <file compile="true" path="system/catalog/prc/YBNKEXTV.prc"/>
+         <file compile="true" path="system/catalog/prc/YBNKPRT1.prc"/>
+         <file compile="true" path="system/catalog/prc/YBNKSRT1.prc"/>
+         <file compile="true" path="jcl/JBNKSTMT.jcl"/>
+         <file compile="true" path="system/catalog/prc/JBNKPRT1.prc"/>
+         <file compile="true" path="system/catalog/prc/YJBNKPRT.prc"/>
+         <file compile="true" path="jcl/ZBNKJSTMT.jcl"/>
+      </filetype>
+      <filetype type="rexx"/>
+      <filetype type="macroRumba"/>
+      <filetype type="bms">
+         <file compile="true" path="bms/DFHZCSGM.bms"/>
+         <file compile="true" path="bms/MBANK10.bms"/>
+         <file compile="true" path="bms/MBANK20.bms"/>
+         <file compile="true" path="bms/MBANK30.bms"/>
+         <file compile="true" path="bms/MBANK35.bms"/>
+         <file compile="true" path="bms/MBANK40.bms"/>
+         <file compile="true" path="bms/MBANK50.bms"/>
+         <file compile="true" path="bms/MBANK60.bms"/>
+         <file compile="true" path="bms/MBANK70.bms"/>
+         <file compile="true" path="bms/MBANK80.bms"/>
+         <file compile="true" path="bms/MBANK90.bms"/>
+         <file compile="true" path="bms/MBANK99.bms"/>
+         <file compile="true" path="bms/MDEMO10.bms"/>
+         <file compile="true" path="bms/MDEMO99.bms"/>
+      </filetype>
+      <filetype type="rocket.commondirectives"/>
+      <filetype type="mfs"/>
+      <filetype type="clist"/>
+      <filetype type="macroExpress"/>
+      <filetype type="easytrieve"/>
+      <filetype type="cobol.copybook"/>
+      <filetype type="lin"/>
+      <filetype type="dbd"/>
+      <folders>
+         <folder compile="true" path="system/loadlib/com_old/amcpresales/bankdemo"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/com/amcpresales"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/com"/>
+         <folder compile="true" path="bms"/>
+         <folder compile="true" path="system/loadlib/com_old/amcpresales/clients/cobol"/>
+         <folder compile="true" path="system/loadlib/com_old/amcpresales"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/clients/java"/>
+         <folder compile="true" path="system/loadlib/com_old"/>
+         <folder compile="true" path="system/catalog/prc"/>
+         <folder compile="true" path="cbl"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/clients/cobol"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/bankdemo"/>
+         <folder compile="true" path="system/Logs/xalogs"/>
+         <folder compile="true" path="system/rdef/backup"/>
+         <folder compile="true" path="system/loadlib/com"/>
+         <folder compile="true" path="system/loadlib/com_old/amcpresales/clients"/>
+         <folder compile="true" path="system/logs1"/>
+         <folder compile="true" path="system/logs2"/>
+         <folder compile="true" path="system/rdef"/>
+         <folder compile="true" path="system/loadlib/com_old/amcpresales/clients/java"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/clients"/>
+         <folder compile="true" path="jcl"/>
+         <folder compile="true" path="system/sysloadlib"/>
+      </folders>
+   </files>
+</project>

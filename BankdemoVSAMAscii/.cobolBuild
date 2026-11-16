@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="BankdemoVSAMAscii" default="combinedbuild" basedir="." xmlns:ac="antlib:net.sf.antcontrib">
+	<taskdef resource="com/microfocus/ant/antlib.xml"/>
+	<!--  ***********************************  -->
+	<!--  * General property initialisation *  -->
+	<!--  ***********************************  -->
+	<property name="mf.buildfile.version" value="12.1"/>
+	<property name="mf.createCar" value="false"/>
+	<property name="pathVar.PROJECT_LOC" value="${basedir}"/>
+	<property name="pathVar.WORKSPACE_LOC" value="${env.WORKSPACE_LOC}"/>
+	<property name="pathVar.PARENT_LOC" value="${env.PARENT_LOC}"/>
+	<property name="pathVar.ECLIPSE_HOME" value="${env.ECLIPSE_HOME}"/>
+	<property environment="env"/>
+	<property name="mf.projectLocation.BankdemoVSAMAscii" value="${basedir}"/>
+	<property name="mf.cfg" value="New_Configuration"/>
+	<property name="mf.cfgtarget" value="cfg.${mf.cfg}"/>
+	<property name="mf.forceCompile" value="true"/>
+	<property name="mf.buildThreadCount" value="1"/>
+	<property name="mf.useDirectiveSet" value="true"/>
+	<property name="mf.settingsDir" value=".settings"/>
+	<property name="mf.connectionName" value=""/>
+	<property name="mf.projectName" value=""/>
+	<property name="mf.failOnError" value="false"/>
+	<property name="mf.cobolFailOnError" value="${mf.failOnError}"/>
+	<property name="mf.cobollinkFailOnError" value="${mf.failOnError}"/>
+	<property name="mf.linkset.cfg.New_Configuration" value=""/>
+	<property name="mf.entryPoint.cfg.New_Configuration" value=""/>
+	<property name="mf.destDir.cfg.New_Configuration" value="${basedir}/system/loadlib"/>
+	<property name="mf.rdfpath" value="${basedir}/system/loadlib"/>
+	<property name="mf.sdkLocation" value="C:\RocketSoftware\ED\\Microsoft\SDK\10\Bin\10.0.26100.0\"/>
+	<property name="mf.buildToolsLocation" value="C:\RocketSoftware\ED\\Microsoft\VC\Tools\MSVC\14.44.35207\bin\Host"/>
+	<target name="printLocations">
+		<echo message="Project Location: &apos;pathVar.PROJECT_LOC&apos;=${pathVar.PROJECT_LOC}"/>
+		<echo message="Project Location: &apos;pathVar.WORKSPACE_LOC&apos;=${pathVar.WORKSPACE_LOC}"/>
+		<echo message="Project Location: &apos;pathVar.PARENT_LOC&apos;=${pathVar.PARENT_LOC}"/>
+		<echo message="Project Location: &apos;pathVar.ECLIPSE_HOME&apos;=${pathVar.ECLIPSE_HOME}"/>
+		<echo message="Project Location: &apos;project.BankdemoVSAMAscii&apos;=${mf.projectLocation.BankdemoVSAMAscii}"/>
+	</target>
+	<!--  ******************************  -->
+	<!--  * OS-specific initialisation *  -->
+	<!--  ******************************  -->
+	<property name="carext" value=".car"/>
+	<property name="bmsFailOnError" value="${mf.failOnError}"/>
+	<condition property="windows">
+		<os family="windows"/>
+	</condition>
+	<condition property="unix">
+		<os family="unix"/>
+	</condition>
+	<ac:if>
+		<isset property="windows"/>
+		<then>
+			<property name="dllext" value=".dll"/>
+			<property name="exeext" value=".exe"/>
+			<property name="mf.objext" value=".obj"/>
+			<property name="mf.equalsInDir" value="="/>
+			<property name="pathVar.pS" value=";"/>
+			<property name="shell" value="cmd"/>
+			<property name="shell.ext" value=".bat"/>
+			<property name="shell.arg" value="/c"/>
+			<property name="script.header" value="@rem MS-DOS Batch File"/>
+			<property name="script.footer" value="exit /b %ERRORLEVEL%"/>
+		</then>
+	</ac:if>
+	<ac:if>
+		<isset property="unix"/>
+		<then>
+			<property name="dllext" value=".so"/>
+			<property name="exeext" value=""/>
+			<property name="mf.objext" value=".o"/>
+			<property name="mf.equalsInDir" value="="/>
+			<property name="pathVar.pS" value=":"/>
+			<property name="shell" value="sh"/>
+			<property name="shell.ext" value=".sh"/>
+			<property name="shell.arg" value="-c"/>
+			<property name="script.header" value="#!/bin/sh"/>
+			<property name="script.footer" value="exit $?"/>
+		</then>
+	</ac:if>
+	<!-- Assembler Macro locations -->
+	<mffilelist id="assembler.macro.locations">
+		<path type="asmmacro" name="${mf.projectLocation.BankdemoVSAMAscii}"/>
+	</mffilelist>
+	<!-- IMS Copy locations -->
+	<mffilelist id="ims.copy.locations">
+		<path type="imscpy" name="${mf.projectLocation.BankdemoVSAMAscii}"/>
+	</mffilelist>
+	<!-- JCL include locations -->
+	<mffilelist id="jcl.include.locations">
+		<path type="jclinclude" name="${mf.projectLocation.BankdemoVSAMAscii}"/>
+	</mffilelist>
+	<!-- Copypath enabled output locations -->
+	<mffilelist id="output.copybook.enabled.locations">
+		<path type="copybook" name="${mf.projectLocation.BankdemoVSAMAscii}"/>
+	</mffilelist>
+	<!--  ***************************  -->
+	<!--  * BMS compiler directives *  -->
+	<!--  ***************************  -->
+	<!-- bms_directive_set_1 -->
+	<mfdirlist id="bms_directive_set_1">
+	</mfdirlist>
+	<!--  ********************  -->
+	<!--  * BMS source files *  -->
+	<!--  ********************  -->
+	<!-- bms_file_set_1 -->
+	<mffilelist type="srcfile" id="bms_file_set_1" srcdir="${basedir}">
+		<file name="DFHZCSGM.bms" objlist="DFHZCSGM.objlist" srcdir="bms"/>
+		<file name="MBANK10.bms" objlist="MBANK10.objlist" srcdir="bms"/>
+		<file name="MBANK20.bms" objlist="MBANK20.objlist" srcdir="bms"/>
+		<file name="MBANK30.bms" objlist="MBANK30.objlist" srcdir="bms"/>
+		<file name="MBANK35.bms" objlist="MBANK35.objlist" srcdir="bms"/>
+		<file name="MBANK40.bms" objlist="MBANK40.objlist" srcdir="bms"/>
+		<file name="MBANK50.bms" objlist="MBANK50.objlist" srcdir="bms"/>
+		<file name="MBANK60.bms" objlist="MBANK60.objlist" srcdir="bms"/>
+		<file name="MBANK70.bms" objlist="MBANK70.objlist" srcdir="bms"/>
+		<file name="MBANK80.bms" objlist="MBANK80.objlist" srcdir="bms"/>
+		<file name="MBANK90.bms" objlist="MBANK90.objlist" srcdir="bms"/>
+		<file name="MBANK99.bms" objlist="MBANK99.objlist" srcdir="bms"/>
+		<file name="MDEMO10.bms" objlist="MDEMO10.objlist" srcdir="bms"/>
+		<file name="MDEMO99.bms" objlist="MDEMO99.objlist" srcdir="bms"/>
+	</mffilelist>
+	<target name="FileCompile.New_Configuration.bms">
+		<bms useDirectiveSet="${mf.useDirectiveSet}" configuration="New Configuration" srcfile="${fullFileName}" destdir="${basedir}/system/loadlib" threadCount="${mf.buildThreadCount}" failonerror="${bmsFailOnError}" srcdir="${basedir}" forceCompile="${mf.forceCompile}" commonDirectivesState="disabled" settingsDir="${mf.settingsDir}">
+			<mfdirlist refid="bms_directive_set_1"/>
+		</bms>
+	</target>
+	<!--  *****************************  -->
+	<!--  * COBOL compiler directives *  -->
+	<!--  *****************************  -->
+	<!-- cobol_directive_set_1 -->
+	<mfdirlist id="cobol_directive_set_1">
+		<directive name="SOURCETABSTOP" id="sourcetabstop" value="4"/>
+		<directive name="COPYEXT" id="copyext" value="cpy,cbl"/>
+		<directive name="COLLECTION" id="collection" value="BankdemoVSAMAscii"/>
+		<directive name="NOCOBOLDIR" id="nocoboldir"/>
+		<directive name="RDFPATH" id="rdfpath" value="${mf.rdfpath}"/>
+	</mfdirlist>
+	<!--  **********************  -->
+	<!--  * COBOL source files *  -->
+	<!--  **********************  -->
+	<!-- cobol_file_set_1 -->
+	<mffilelist type="srcfile" id="cobol_file_set_1" srcdir="${basedir}">
+		<file name="BBANK10P.cbl" objlist="BBANK10P.objlist" srcdir="cbl"/>
+		<file name="BBANK20P.cbl" objlist="BBANK20P.objlist" srcdir="cbl"/>
+		<file name="BBANK30P.cbl" objlist="BBANK30P.objlist" srcdir="cbl"/>
+		<file name="BBANK35P.cbl" objlist="BBANK35P.objlist" srcdir="cbl"/>
+		<file name="BBANK40P.cbl" objlist="BBANK40P.objlist" srcdir="cbl"/>
+		<file name="BBANK50P.cbl" objlist="BBANK50P.objlist" srcdir="cbl"/>
+		<file name="BBANK60P.cbl" objlist="BBANK60P.objlist" srcdir="cbl"/>
+		<file name="BBANK70P.cbl" objlist="BBANK70P.objlist" srcdir="cbl"/>
+		<file name="BBANK80P.cbl" objlist="BBANK80P.objlist" srcdir="cbl"/>
+		<file name="BBANK90P.cbl" objlist="BBANK90P.objlist" srcdir="cbl"/>
+		<file name="BBANK99P.cbl" objlist="BBANK99P.objlist" srcdir="cbl"/>
+		<file name="BBANKZZP.cbl" objlist="BBANKZZP.objlist" srcdir="cbl"/>
+		<file name="BCASH00P.cbl" objlist="BCASH00P.objlist" srcdir="cbl"/>
+		<file name="BCASH01P.cbl" objlist="BCASH01P.objlist" srcdir="cbl"/>
+		<file name="BCASH02P.cbl" objlist="BCASH02P.objlist" srcdir="cbl"/>
+		<file name="BCASH03P.cbl" objlist="BCASH03P.objlist" srcdir="cbl"/>
+		<file name="BDEMO10P.cbl" objlist="BDEMO10P.objlist" srcdir="cbl"/>
+		<file name="BDEMO99P.cbl" objlist="BDEMO99P.objlist" srcdir="cbl"/>
+		<file name="CJBANK.cbl" objlist="CJBANK.objlist" srcdir="cbl"/>
+		<file name="DBANK01P.cbl" objlist="DBANK01P.objlist" srcdir="cbl"/>
+		<file name="DBANK02P.cbl" objlist="DBANK02P.objlist" srcdir="cbl"/>
+		<file name="DBANK03P.cbl" objlist="DBANK03P.objlist" srcdir="cbl"/>
+		<file name="DBANK04P.cbl" objlist="DBANK04P.objlist" srcdir="cbl"/>
+		<file name="DBANK05P.cbl" objlist="DBANK05P.objlist" srcdir="cbl"/>
+		<file name="DBANK06P.cbl" objlist="DBANK06P.objlist" srcdir="cbl"/>
+		<file name="DBANK07P.cbl" objlist="DBANK07P.objlist" srcdir="cbl"/>
+		<file name="DBANK08P.cbl" objlist="DBANK08P.objlist" srcdir="cbl"/>
+		<file name="DBANK09P.cbl" objlist="DBANK09P.objlist" srcdir="cbl"/>
+		<file name="DBANK11P.cbl" objlist="DBANK11P.objlist" srcdir="cbl"/>
+		<file name="DBANK51P.cbl" objlist="DBANK51P.objlist" srcdir="cbl"/>
+		<file name="DBANK52P.cbl" objlist="DBANK52P.objlist" srcdir="cbl"/>
+		<file name="DBANKIOP.cbl" objlist="DBANKIOP.objlist" srcdir="cbl"/>
+		<file name="DCASH01P.cbl" objlist="DCASH01P.objlist" srcdir="cbl"/>
+		<file name="DCASH02P.cbl" objlist="DCASH02P.objlist" srcdir="cbl"/>
+		<file name="DHELP01P.cbl" objlist="DHELP01P.objlist" srcdir="cbl"/>
+		<file name="ENQ1.cbl" objlist="ENQ1.objlist" srcdir="cbl"/>
+		<file name="ENQ2.cbl" objlist="ENQ2.objlist" srcdir="cbl"/>
+		<file name="HELLOJAV.cbl" objlist="HELLOJAV.objlist" srcdir="cbl"/>
+		<file name="SBANK00P.cbl" objlist="SBANK00P.objlist" srcdir="cbl"/>
+		<file name="SBANK10P.cbl" objlist="SBANK10P.objlist" srcdir="cbl"/>
+		<file name="SBANK20P.cbl" objlist="SBANK20P.objlist" srcdir="cbl"/>
+		<file name="SBANK30P.cbl" objlist="SBANK30P.objlist" srcdir="cbl"/>
+		<file name="SBANK35P.cbl" objlist="SBANK35P.objlist" srcdir="cbl"/>
+		<file name="SBANK40P.cbl" objlist="SBANK40P.objlist" srcdir="cbl"/>
+		<file name="SBANK50P.cbl" objlist="SBANK50P.objlist" srcdir="cbl"/>
+		<file name="SBANK60P.cbl" objlist="SBANK60P.objlist" srcdir="cbl"/>
+		<file name="SBANK70P.cbl" objlist="SBANK70P.objlist" srcdir="cbl"/>
+		<file name="SBANK80P.cbl" objlist="SBANK80P.objlist" srcdir="cbl"/>
+		<file name="SBANK90P.cbl" objlist="SBANK90P.objlist" srcdir="cbl"/>
+		<file name="SBANK99P.cbl" objlist="SBANK99P.objlist" srcdir="cbl"/>
+		<file name="SBANKZZP.cbl" objlist="SBANKZZP.objlist" srcdir="cbl"/>
+		<file name="SCASH00P.cbl" objlist="SCASH00P.objlist" srcdir="cbl"/>
+		<file name="SCASHDRV.cbl" objlist="SCASHDRV.objlist" srcdir="cbl"/>
+		<file name="SCHAR00P.cbl" objlist="SCHAR00P.objlist" srcdir="cbl"/>
+		<file name="SCUSTOMP.cbl" objlist="SCUSTOMP.objlist" srcdir="cbl"/>
+		<file name="SDEMO00P.cbl" objlist="SDEMO00P.objlist" srcdir="cbl"/>
+		<file name="SDEMO10P.cbl" objlist="SDEMO10P.objlist" srcdir="cbl"/>
+		<file name="SDEMO99P.cbl" objlist="SDEMO99P.objlist" srcdir="cbl"/>
+		<file name="SPSWD01P.cbl" objlist="SPSWD01P.objlist" srcdir="cbl"/>
+		<file name="SSECUREP.cbl" objlist="SSECUREP.objlist" srcdir="cbl"/>
+		<file name="SSTMT01P.cbl" objlist="SSTMT01P.objlist" srcdir="cbl"/>
+		<file name="STRAC00P.cbl" objlist="STRAC00P.objlist" srcdir="cbl"/>
+		<file name="SVERSONP.cbl" objlist="SVERSONP.objlist" srcdir="cbl"/>
+		<file name="TESTTIME.cbl" objlist="TESTTIME.objlist" srcdir="cbl"/>
+		<file name="UDATECNV.cbl" objlist="UDATECNV.objlist" srcdir="cbl"/>
+		<file name="UTWOSCMP.cbl" objlist="UTWOSCMP.objlist" srcdir="cbl"/>
+		<file name="ZBANKULP.cbl" objlist="ZBANKULP.objlist" srcdir="cbl"/>
+		<file name="ZBNKE15.cbl" objlist="ZBNKE15.objlist" srcdir="cbl"/>
+		<file name="ZBNKE35.cbl" objlist="ZBNKE35.objlist" srcdir="cbl"/>
+		<file name="ZBNKEXT1.cbl" objlist="ZBNKEXT1.objlist" srcdir="cbl"/>
+		<file name="ZBNKLOAD.cbl" objlist="ZBNKLOAD.objlist" srcdir="cbl"/>
+		<file name="ZBNKPRT1.cbl" objlist="ZBNKPRT1.objlist" srcdir="cbl"/>
+		<file name="ZBNKPRT2.cbl" objlist="ZBNKPRT2.objlist" srcdir="cbl"/>
+	</mffilelist>
+	<!-- COBOL copybook locations -->
+	<mffilelist id="cobol.copybook.locations">
+		<path type="copybook" name="${mf.projectLocation.BankdemoVSAMAscii}"/>
+		<path type="copybook" name="${mf.projectLocation.BankdemoVSAMAscii}/cbl"/>
+		<path type="copybook" name="${mf.projectLocation.BankdemoVSAMAscii}/copybook"/>
+	</mffilelist>
+	<!--  ********************************  -->
+	<!--  * Source File Compile and Link *  -->
+	<!--  ********************************  -->
+	<!-- Configuration:New_Configuration -->
+	<target name="FileCompile.New_Configuration.cobol">
+		<cobol debug="true" configuration="New Configuration" analysisData="${analysisData}" threadCount="${mf.buildThreadCount}" commonDirectivesState="disabled" settingsDir="${mf.settingsDir}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${mf.useDirectiveSet}" srcfile="${fullFileName}" destdir="${basedir}/system/loadlib" is64bit="true" failonerror="${mf.cobolFailOnError}" srcdir="${basedir}" forceCompile="${mf.forceCompile}" connectionName="${mf.connectionName}" projectName="${mf.projectName}" desttype="obj">
+			<mffilelist refid="cobol.copybook.locations"/>
+			<mfdirlist refid="cobol_directive_set_1"/>
+		</cobol>
+		<cobollink threadCount="${mf.buildThreadCount}">
+			<cobollinkinstlist>
+				<cobollinkinstruction destfile="@{baseName}" objExt="${mf.objext}" baseFileList="${fileBaseName}" threadedRts="true" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" srcdir="${basedir}/system/loadlib" desttype="dll/cso" linksetName="${mf.linkset.cfg.New_Configuration}">
+				</cobollinkinstruction>
+			</cobollinkinstlist>
+		</cobollink>
+	</target>
+	<!--  ****************  -->
+	<!--  * Object files *  -->
+	<!--  ****************  -->
+	<!-- Default -->
+	<mffilelist id="cobol.default.object.files.New Configuration" srcdir="${basedir}/system/loadlib" type="objfile">
+		<file name="BBANK10P${mf.objext}" objlist="BBANK10P.objlist"/>
+		<file name="BBANK20P${mf.objext}" objlist="BBANK20P.objlist"/>
+		<file name="BBANK30P${mf.objext}" objlist="BBANK30P.objlist"/>
+		<file name="BBANK35P${mf.objext}" objlist="BBANK35P.objlist"/>
+		<file name="BBANK40P${mf.objext}" objlist="BBANK40P.objlist"/>
+		<file name="BBANK50P${mf.objext}" objlist="BBANK50P.objlist"/>
+		<file name="BBANK60P${mf.objext}" objlist="BBANK60P.objlist"/>
+		<file name="BBANK70P${mf.objext}" objlist="BBANK70P.objlist"/>
+		<file name="BBANK80P${mf.objext}" objlist="BBANK80P.objlist"/>
+		<file name="BBANK90P${mf.objext}" objlist="BBANK90P.objlist"/>
+		<file name="BBANK99P${mf.objext}" objlist="BBANK99P.objlist"/>
+		<file name="BBANKZZP${mf.objext}" objlist="BBANKZZP.objlist"/>
+		<file name="BCASH00P${mf.objext}" objlist="BCASH00P.objlist"/>
+		<file name="BCASH01P${mf.objext}" objlist="BCASH01P.objlist"/>
+		<file name="BCASH02P${mf.objext}" objlist="BCASH02P.objlist"/>
+		<file name="BCASH03P${mf.objext}" objlist="BCASH03P.objlist"/>
+		<file name="BDEMO10P${mf.objext}" objlist="BDEMO10P.objlist"/>
+		<file name="BDEMO99P${mf.objext}" objlist="BDEMO99P.objlist"/>
+		<file name="CJBANK${mf.objext}" objlist="CJBANK.objlist"/>
+		<file name="DBANK01P${mf.objext}" objlist="DBANK01P.objlist"/>
+		<file name="DBANK02P${mf.objext}" objlist="DBANK02P.objlist"/>
+		<file name="DBANK03P${mf.objext}" objlist="DBANK03P.objlist"/>
+		<file name="DBANK04P${mf.objext}" objlist="DBANK04P.objlist"/>
+		<file name="DBANK05P${mf.objext}" objlist="DBANK05P.objlist"/>
+		<file name="DBANK06P${mf.objext}" objlist="DBANK06P.objlist"/>
+		<file name="DBANK07P${mf.objext}" objlist="DBANK07P.objlist"/>
+		<file name="DBANK08P${mf.objext}" objlist="DBANK08P.objlist"/>
+		<file name="DBANK09P${mf.objext}" objlist="DBANK09P.objlist"/>
+		<file name="DBANK11P${mf.objext}" objlist="DBANK11P.objlist"/>
+		<file name="DBANK51P${mf.objext}" objlist="DBANK51P.objlist"/>
+		<file name="DBANK52P${mf.objext}" objlist="DBANK52P.objlist"/>
+		<file name="DBANKIOP${mf.objext}" objlist="DBANKIOP.objlist"/>
+		<file name="DCASH01P${mf.objext}" objlist="DCASH01P.objlist"/>
+		<file name="DCASH02P${mf.objext}" objlist="DCASH02P.objlist"/>
+		<file name="DHELP01P${mf.objext}" objlist="DHELP01P.objlist"/>
+		<file name="ENQ1${mf.objext}" objlist="ENQ1.objlist"/>
+		<file name="ENQ2${mf.objext}" objlist="ENQ2.objlist"/>
+		<file name="HELLOJAV${mf.objext}" objlist="HELLOJAV.objlist"/>
+		<file name="SBANK00P${mf.objext}" objlist="SBANK00P.objlist"/>
+		<file name="SBANK10P${mf.objext}" objlist="SBANK10P.objlist"/>
+		<file name="SBANK20P${mf.objext}" objlist="SBANK20P.objlist"/>
+		<file name="SBANK30P${mf.objext}" objlist="SBANK30P.objlist"/>
+		<file name="SBANK35P${mf.objext}" objlist="SBANK35P.objlist"/>
+		<file name="SBANK40P${mf.objext}" objlist="SBANK40P.objlist"/>
+		<file name="SBANK50P${mf.objext}" objlist="SBANK50P.objlist"/>
+		<file name="SBANK60P${mf.objext}" objlist="SBANK60P.objlist"/>
+		<file name="SBANK70P${mf.objext}" objlist="SBANK70P.objlist"/>
+		<file name="SBANK80P${mf.objext}" objlist="SBANK80P.objlist"/>
+		<file name="SBANK90P${mf.objext}" objlist="SBANK90P.objlist"/>
+		<file name="SBANK99P${mf.objext}" objlist="SBANK99P.objlist"/>
+		<file name="SBANKZZP${mf.objext}" objlist="SBANKZZP.objlist"/>
+		<file name="SCASH00P${mf.objext}" objlist="SCASH00P.objlist"/>
+		<file name="SCASHDRV${mf.objext}" objlist="SCASHDRV.objlist"/>
+		<file name="SCHAR00P${mf.objext}" objlist="SCHAR00P.objlist"/>
+		<file name="SCUSTOMP${mf.objext}" objlist="SCUSTOMP.objlist"/>
+		<file name="SDEMO00P${mf.objext}" objlist="SDEMO00P.objlist"/>
+		<file name="SDEMO10P${mf.objext}" objlist="SDEMO10P.objlist"/>
+		<file name="SDEMO99P${mf.objext}" objlist="SDEMO99P.objlist"/>
+		<file name="SPSWD01P${mf.objext}" objlist="SPSWD01P.objlist"/>
+		<file name="SSECUREP${mf.objext}" objlist="SSECUREP.objlist"/>
+		<file name="SSTMT01P${mf.objext}" objlist="SSTMT01P.objlist"/>
+		<file name="STRAC00P${mf.objext}" objlist="STRAC00P.objlist"/>
+		<file name="SVERSONP${mf.objext}" objlist="SVERSONP.objlist"/>
+		<file name="TESTTIME${mf.objext}" objlist="TESTTIME.objlist"/>
+		<file name="UDATECNV${mf.objext}" objlist="UDATECNV.objlist"/>
+		<file name="UTWOSCMP${mf.objext}" objlist="UTWOSCMP.objlist"/>
+		<file name="ZBANKULP${mf.objext}" objlist="ZBANKULP.objlist"/>
+		<file name="ZBNKE15${mf.objext}" objlist="ZBNKE15.objlist"/>
+		<file name="ZBNKE35${mf.objext}" objlist="ZBNKE35.objlist"/>
+		<file name="ZBNKEXT1${mf.objext}" objlist="ZBNKEXT1.objlist"/>
+		<file name="ZBNKLOAD${mf.objext}" objlist="ZBNKLOAD.objlist"/>
+		<file name="ZBNKPRT1${mf.objext}" objlist="ZBNKPRT1.objlist"/>
+		<file name="ZBNKPRT2${mf.objext}" objlist="ZBNKPRT2.objlist"/>
+	</mffilelist>
+	<target name="cobol.createcar.cfg.New_Configuration.property">
+		<condition property="mf.createCar.isTrue">
+			<istrue value="${mf.createCar}"/>
+		</condition>
+	</target>
+	<target name="cobol.createcar.cfg.New_Configuration" depends="cobol.createcar.cfg.New_Configuration.property" if="mf.createCar.isTrue">
+	</target>
+	<!-- cfg.New_Configuration -->
+	<target name="combinedbuild.cfg.New_Configuration" depends="printLocations,pre.build.cfg.New_Configuration,bms.cfg.New_Configuration,asm.cfg.New_Configuration,ims.cfg.New_Configuration,nature.specific.build.cfg.New_Configuration,post.build.cfg.New_Configuration,deploy.cfg.New_Configuration">
+	</target>
+	<target name="imscobbuild.cfg.New_Configuration" depends="printLocations,pre.build.cfg.New_Configuration,ims.cfg.New_Configuration,nature.specific.build.cfg.New_Configuration,post.build.cfg.New_Configuration,deploy.cfg.New_Configuration">
+	</target>
+	<target name="bmsbuild.cfg.New_Configuration" depends="printLocations,bms.cfg.New_Configuration">
+	</target>
+	<target name="asm.cfg.New_Configuration">
+		<echo message="No Assembler programs to compile"/>
+		<echo message="No Assembler Linker files to compile"/>
+	</target>
+	<target name="bms.cfg.New_Configuration">
+		<bms useDirectiveSet="${mf.useDirectiveSet}" configuration="New Configuration" destdir="${basedir}/system/loadlib" threadCount="${mf.buildThreadCount}" failonerror="${bmsFailOnError}" forceCompile="${mf.forceCompile}" commonDirectivesState="disabled" settingsDir="${mf.settingsDir}">
+			<mfdirlist refid="bms_directive_set_1"/>
+			<mffilelist refid="bms_file_set_1"/>
+		</bms>
+	</target>
+	<target name="ims.cfg.New_Configuration">
+		<echo message="No DBD files to compile"/>
+		<echo message="No MFS files to compile"/>
+		<echo message="No PSB files to compile"/>
+	</target>
+	<target name="New_Configuration.FileCompile.Local">
+		<property name="fileextn.cbl" value="cobol"/>
+		<property name="fileextn.cob" value="cobol"/>
+		<property name="fileextn.pco" value="cobol"/>
+		<property name="fileextn.sqb" value="cobol"/>
+		<property name="fileextn.eco" value="cobol"/>
+		<property name="fileextn.bms" value="bms"/>
+		<property name="fileextn.mlc" value="asm"/>
+		<property name="fileextn.asm" value="asm"/>
+		<property name="fileextn.cap" value="asm"/>
+		<property name="fileextn.lin" value="lin"/>
+		<property name="fileextn.mac" value="macro"/>
+		<property name="fileextn.cpy" value="macro"/>
+		<property name="fileextn.rmc" value="macroRumba"/>
+		<property name="fileextn.js" value="macroExpress"/>
+		<property name="fileextn.jcl" value="jcl"/>
+		<property name="fileextn.vse" value="jcl"/>
+		<property name="fileextn.prc" value="jcl"/>
+		<property name="fileextn.dbd" value="dbd"/>
+		<property name="fileextn.psb" value="psb"/>
+		<property name="fileextn.mfs" value="mfs"/>
+		<property name="fileextn.rex" value="rexx"/>
+		<property name="fileextn.rxf" value="rexx"/>
+		<property name="fileextn.tso" value="clist"/>
+		<property name="fileextn.ezt" value="easytrieve"/>
+		<property name="fileextn.pli" value="pli"/>
+		<property name="fileextn.pl1" value="pli"/>
+		<executefilecompile filesList="${filesList.Local}" linksetList=""/>
+	</target>
+	<!--  *************************  -->
+	<!--  * Configuration targets *  -->
+	<!--  *************************  -->
+	<!-- cfg.New_Configuration -->
+	<target name="cobolbuild.cfg.New_Configuration" depends="printLocations,pre.build.cfg.New_Configuration,nature.specific.build.cfg.New_Configuration,post.build.cfg.New_Configuration,deploy.cfg.New_Configuration"/>
+	<target name="nature.specific.build.cfg.New_Configuration" depends="cobol.cfg.New_Configuration"/>
+	<target name="cobol.cfg.New_Configuration" depends="cobol.compile.cfg.New_Configuration,cobol.link.cfg.New_Configuration"/>
+	<target name="New_Configuration.FileCompile">
+		<property name="fileextn.cbl" value="cobol"/>
+		<property name="fileextn.cob" value="cobol"/>
+		<property name="fileextn.pco" value="cobol"/>
+		<property name="fileextn.sqb" value="cobol"/>
+		<property name="fileextn.eco" value="cobol"/>
+		<property name="fileextn.bms" value="bms"/>
+		<property name="fileextn.mlc" value="asm"/>
+		<property name="fileextn.asm" value="asm"/>
+		<property name="fileextn.cap" value="asm"/>
+		<property name="fileextn.lin" value="lin"/>
+		<property name="fileextn.mac" value="macro"/>
+		<property name="fileextn.cpy" value="macro"/>
+		<property name="fileextn.rmc" value="macroRumba"/>
+		<property name="fileextn.js" value="macroExpress"/>
+		<property name="fileextn.jcl" value="jcl"/>
+		<property name="fileextn.vse" value="jcl"/>
+		<property name="fileextn.prc" value="jcl"/>
+		<property name="fileextn.dbd" value="dbd"/>
+		<property name="fileextn.psb" value="psb"/>
+		<property name="fileextn.mfs" value="mfs"/>
+		<property name="fileextn.rex" value="rexx"/>
+		<property name="fileextn.rxf" value="rexx"/>
+		<property name="fileextn.tso" value="clist"/>
+		<property name="fileextn.ezt" value="easytrieve"/>
+		<property name="fileextn.pli" value="pli"/>
+		<property name="fileextn.pl1" value="pli"/>
+		<executefilecompile filesList="${filesList}" linksetList="${linksetList}"/>
+	</target>
+	<target name="cobol.compile.cfg.New_Configuration">
+		<cobol debug="true" configuration="New Configuration" analysisData="${analysisData}" threadCount="${mf.buildThreadCount}" commonDirectivesState="disabled" settingsDir="${mf.settingsDir}" threadedRts="true" analysisDataDir="${analysisDataDir}" useDirectiveSet="${mf.useDirectiveSet}" destdir="${basedir}/system/loadlib" is64bit="true" failonerror="${mf.cobolFailOnError}" forceCompile="${mf.forceCompile}" connectionName="${mf.connectionName}" projectName="${mf.projectName}" desttype="obj">
+			<mffilelist refid="cobol.copybook.locations"/>
+			<mfdirlist refid="cobol_directive_set_1"/>
+			<mffilelist refid="cobol_file_set_1"/>
+		</cobol>
+	</target>
+	<target name="cobol.link.cfg.New_Configuration">
+		<cobollink threadCount="${mf.buildThreadCount}">
+			<cobollinkinstlist>
+				<cobollinkinstruction destfile="BBANK10P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK10P${mf.objext}" objlist="BBANK10P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK20P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK20P${mf.objext}" objlist="BBANK20P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK30P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK30P${mf.objext}" objlist="BBANK30P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK35P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK35P${mf.objext}" objlist="BBANK35P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK40P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK40P${mf.objext}" objlist="BBANK40P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK50P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK50P${mf.objext}" objlist="BBANK50P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK60P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK60P${mf.objext}" objlist="BBANK60P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK70P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK70P${mf.objext}" objlist="BBANK70P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK80P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK80P${mf.objext}" objlist="BBANK80P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK90P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK90P${mf.objext}" objlist="BBANK90P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANK99P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANK99P${mf.objext}" objlist="BBANK99P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BBANKZZP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BBANKZZP${mf.objext}" objlist="BBANKZZP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BCASH00P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BCASH00P${mf.objext}" objlist="BCASH00P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BCASH01P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BCASH01P${mf.objext}" objlist="BCASH01P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BCASH02P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BCASH02P${mf.objext}" objlist="BCASH02P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BCASH03P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BCASH03P${mf.objext}" objlist="BCASH03P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BDEMO10P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BDEMO10P${mf.objext}" objlist="BDEMO10P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="BDEMO99P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="BDEMO99P${mf.objext}" objlist="BDEMO99P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="CJBANK" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="CJBANK${mf.objext}" objlist="CJBANK.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK01P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK01P${mf.objext}" objlist="DBANK01P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK02P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK02P${mf.objext}" objlist="DBANK02P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK03P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK03P${mf.objext}" objlist="DBANK03P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK04P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK04P${mf.objext}" objlist="DBANK04P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK05P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK05P${mf.objext}" objlist="DBANK05P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK06P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK06P${mf.objext}" objlist="DBANK06P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK07P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK07P${mf.objext}" objlist="DBANK07P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK08P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK08P${mf.objext}" objlist="DBANK08P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK09P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK09P${mf.objext}" objlist="DBANK09P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK11P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK11P${mf.objext}" objlist="DBANK11P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK51P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK51P${mf.objext}" objlist="DBANK51P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANK52P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANK52P${mf.objext}" objlist="DBANK52P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DBANKIOP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DBANKIOP${mf.objext}" objlist="DBANKIOP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DCASH01P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DCASH01P${mf.objext}" objlist="DCASH01P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DCASH02P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DCASH02P${mf.objext}" objlist="DCASH02P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="DHELP01P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="DHELP01P${mf.objext}" objlist="DHELP01P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ENQ1" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ENQ1${mf.objext}" objlist="ENQ1.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ENQ2" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ENQ2${mf.objext}" objlist="ENQ2.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="HELLOJAV" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="HELLOJAV${mf.objext}" objlist="HELLOJAV.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK00P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK00P${mf.objext}" objlist="SBANK00P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK10P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK10P${mf.objext}" objlist="SBANK10P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK20P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK20P${mf.objext}" objlist="SBANK20P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK30P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK30P${mf.objext}" objlist="SBANK30P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK35P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK35P${mf.objext}" objlist="SBANK35P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK40P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK40P${mf.objext}" objlist="SBANK40P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK50P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK50P${mf.objext}" objlist="SBANK50P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK60P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK60P${mf.objext}" objlist="SBANK60P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK70P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK70P${mf.objext}" objlist="SBANK70P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK80P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK80P${mf.objext}" objlist="SBANK80P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK90P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK90P${mf.objext}" objlist="SBANK90P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANK99P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANK99P${mf.objext}" objlist="SBANK99P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SBANKZZP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SBANKZZP${mf.objext}" objlist="SBANKZZP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SCASH00P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SCASH00P${mf.objext}" objlist="SCASH00P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SCASHDRV" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SCASHDRV${mf.objext}" objlist="SCASHDRV.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SCHAR00P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SCHAR00P${mf.objext}" objlist="SCHAR00P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SCUSTOMP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SCUSTOMP${mf.objext}" objlist="SCUSTOMP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SDEMO00P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SDEMO00P${mf.objext}" objlist="SDEMO00P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SDEMO10P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SDEMO10P${mf.objext}" objlist="SDEMO10P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SDEMO99P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SDEMO99P${mf.objext}" objlist="SDEMO99P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SPSWD01P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SPSWD01P${mf.objext}" objlist="SPSWD01P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SSECUREP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SSECUREP${mf.objext}" objlist="SSECUREP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SSTMT01P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SSTMT01P${mf.objext}" objlist="SSTMT01P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="STRAC00P" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="STRAC00P${mf.objext}" objlist="STRAC00P.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="SVERSONP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="SVERSONP${mf.objext}" objlist="SVERSONP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="TESTTIME" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="TESTTIME${mf.objext}" objlist="TESTTIME.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="UDATECNV" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="UDATECNV${mf.objext}" objlist="UDATECNV.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="UTWOSCMP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="UTWOSCMP${mf.objext}" objlist="UTWOSCMP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ZBANKULP" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ZBANKULP${mf.objext}" objlist="ZBANKULP.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ZBNKE15" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ZBNKE15${mf.objext}" objlist="ZBNKE15.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ZBNKE35" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ZBNKE35${mf.objext}" objlist="ZBNKE35.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ZBNKEXT1" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ZBNKEXT1${mf.objext}" objlist="ZBNKEXT1.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ZBNKLOAD" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ZBNKLOAD${mf.objext}" objlist="ZBNKLOAD.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ZBNKPRT1" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ZBNKPRT1${mf.objext}" objlist="ZBNKPRT1.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+				<cobollinkinstruction destfile="ZBNKPRT2" entrypoint="${mf.entryPoint.cfg.New_Configuration}" sharedRts="true" destdir="${mf.destDir.cfg.New_Configuration}" is64bit="true" objectdir="${basedir}/system/loadlib" failonerror="${mf.cobollinkFailOnError}" desttype="dll/cso" threadedRts="true">
+					<mffilelist srcdir="${basedir}/system/loadlib">
+						<file name="ZBNKPRT2${mf.objext}" objlist="ZBNKPRT2.objlist"/>
+					</mffilelist>
+				</cobollinkinstruction>
+			</cobollinkinstlist>
+		</cobollink>
+	</target>
+	<target name="pre.build.cfg.New_Configuration">
+	</target>
+	<target name="post.build.cfg.New_Configuration" depends="cobol.createcar.cfg.New_Configuration">
+	</target>
+	<target name="deploy.cfg.New_Configuration">
+	</target>
+	<target name="clean.cfg.New_Configuration">
+		<bmsclean dsect="true" dsectExtension=".cpy" configuration="New Configuration" failonerror="${bmsFailOnError}" binarydir="${basedir}/system/loadlib" copydir="${basedir}" map="true" verbose="false">
+			<mfdirlist refid="bms_directive_set_1"/>
+			<mffilelist refid="bms_file_set_1"/>
+			<mffilelist delete="false" refid="output.copybook.enabled.locations"/>
+		</bmsclean>
+		<cobolclean debug="true" destdir="${basedir}/system/loadlib" desttype="dll">
+			<mffilelist refid="cobol_file_set_1"/>
+		</cobolclean>
+	</target>
+	<!--  *******************  -->
+	<!--  * General targets *  -->
+	<!--  *******************  -->
+	<target name="compileSourceLocally">
+		<antcall target="${mf.cfg}.FileCompile.Local" inheritAll="true"/>
+	</target>
+	<target name="clean">
+		<antcall target="clean.${mf.cfgtarget}" inheritAll="true"/>
+	</target>
+	<target name="compileSource">
+		<antcall target="${mf.cfg}.FileCompile" inheritAll="true"/>
+	</target>
+	<target name="cobollink">
+		<antcall target="cobol.link.${mf.cfgtarget}" inheritAll="true"/>
+	</target>
+	<target name="compile" depends="compileSource">
+	</target>
+	<target name="combinedbuild">
+		<antcall target="combinedbuild.${mf.cfgtarget}" inheritAll="true"/>
+	</target>
+	<target name="imscobbuild">
+		<antcall target="imscobbuild.${mf.cfgtarget}" inheritAll="true"/>
+	</target>
+	<target name="bmsbuild">
+		<antcall target="bmsbuild.${mf.cfgtarget}" inheritAll="true"/>
+	</target>
+	<target name="cobolbuild">
+		<antcall target="cobolbuild.${mf.cfgtarget}" inheritAll="true"/>
+	</target>
+</project>

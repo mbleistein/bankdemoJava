@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<x:dirset xmlns:x="http://rocketsoftware.com/directivesset" schemaVersion="1.1">
+  <x:directive handler="project.cobolSettings" id="charset" name="CHARSET&quot;ASCII&quot;"/>
+  <x:directive handler="project.cobolSettings" id="dialect" name="DIALECT&quot;ROCKET&quot;"/>
+  <x:setting handler="project.cobolSettings" id="override" value="true"/>
+</x:dirset>

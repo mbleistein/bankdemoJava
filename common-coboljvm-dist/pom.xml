@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <parent>
+      <groupId>com.amcpresales</groupId>
+      <artifactId>cobjvm-pdf-parent</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <relativePath>../cobjvm-pdf-parent/pom.xml</relativePath>
+  </parent> 
+   
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>common-coboljvm-dist</artifactId>
+  <packaging>jar</packaging>
+  
+  <dependencies>
+    <dependency>
+	    <groupId>com.amcpresales</groupId>
+	    <artifactId>coboljvm-pdf</artifactId>
+	    <version>${project.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.amcpresales</groupId>
+	    <artifactId>coboljvm_cryptapis</artifactId>
+	    <version>${project.version}</version>
+    </dependency>      
+    <dependency>
+    	<groupId>com.amcpresales</groupId>
+	    <artifactId>coboljvm-loanamortclient</artifactId>
+	    <version>${project.version}</version>
+    </dependency>  
+    <dependency>
+        <groupId>com.amcpresales</groupId>
+        <artifactId>bankdemoBatchJVM</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.amcpresales</groupId>
+        <artifactId>BankdemoBatchReport</artifactId>
+        <version>${project.version}</version>
+    </dependency>              
+</dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.6.2</version> <!-- Check for latest version -->
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <!--<minimizeJar>false</minimizeJar> -->
+                        <!-- OPTIONAL: Only include your specific namespace if there are third-party libs you don't want in the JAR -->
+                        <filters>
+                            <filter>
+                                <artifact>*:*</artifact>
+                                <includes>         
+                                    <!-- Allow the specific target package chain explicitly -->
+                                    <include>com/amcpresales/**</include>
+                                    <!-- Catch-all wildcards for COBOL data and type metadata files -->
+                                    <include>**/*.cbldat</include>
+                                    <include>**/*_MF_LCTYPE*</include>
+                                    <include>META-INF/**</include>                                    
+                                </includes>
+                            </filter>
+                        </filters>
+                        
+                        <!-- Automatically copy the final Fat JAR to your external application's classpath directory -->
+                        <outputDirectory>${project.basedir}/../BankdemoVSAMAscii/system/loadlib</outputDirectory>
+                        <finalName>coboljvm-java-classes</finalName>
+                        
+                        <!-- Prevents the plugin from generating a secondary 'original' JAR file -->
+                        <shadedArtifactAttached>false</shadedArtifactAttached> 
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+  
+</project>
