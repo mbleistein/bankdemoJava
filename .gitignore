@@ -1,6 +1,11 @@
 # Compiled class file
 *.class
 
+# Folders
+loadlib/
+reports/
+**/target/classes
+
 # Log file
 *.log
 
