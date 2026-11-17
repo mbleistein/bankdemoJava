@@ -2,15 +2,13 @@ import sys
 import os
 import debugpy
 
-
-
 def main(args=None):
-    debugpy.listen(("0.0.0.0", 5678))
-    
-    print("Waiting for debugger to attach...")
-    debugpy.wait_for_client()  # Pauses execution until you attach the debugger
-    debugpy.breakpoint()       # Forces a hard breakpoint right here
-    print("Debugger attached! Running code...") 
+# debugpy.listen(("0.0.0.0", 5678))
+#
+# print("Waiting for debugger to attach...")
+# debugpy.wait_for_client()  # Pauses execution until you attach the debugger
+# debugpy.breakpoint()       # Forces a hard breakpoint right here
+# print("Debugger attached! Running code...") 
     
 # --- Your regular script starts below ---       
     if args is None:
