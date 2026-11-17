@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- MFDBFH server and database configuration -->
+<datastores usevault="false">
+  <server name="banksstest" type="sqlserver" access="odbc">
+    <dsn name="SS.Master" type="database" dbname="master" connect="Driver={ODBC Driver 17 for SQL Server};Server=(local);Database=master;Uid=mfuser;Pwd=mfuser"/>
+  </server>
+</datastores>

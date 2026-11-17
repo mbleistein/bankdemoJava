@@ -6,10 +6,10 @@
 	<!--  ***********************************  -->
 	<property name="mf.buildfile.version" value="12.1"/>
 	<property name="mf.createCar" value="false"/>
+	<property name="pathVar.WORKSPACE_LOC" value="${env.WORKSPACE_LOC}"/>
 	<property name="pathVar.PARENT_LOC" value="${env.PARENT_LOC}"/>
 	<property name="pathVar.ECLIPSE_HOME" value="${env.ECLIPSE_HOME}"/>
 	<property name="pathVar.PROJECT_LOC" value="${basedir}"/>
-	<property name="pathVar.WORKSPACE_LOC" value="${env.WORKSPACE_LOC}"/>
 	<property environment="env"/>
 	<property name="mf.projectLocation.LoanAmortService" value="${basedir}"/>
 	<property name="mf.cfg" value="New_Configuration"/>
@@ -30,10 +30,10 @@
 	<property name="mf.sdkLocation" value="C:\RocketSoftware\ED\\Microsoft\SDK\10\Bin\10.0.26100.0\"/>
 	<property name="mf.buildToolsLocation" value="C:\RocketSoftware\ED\\Microsoft\VC\Tools\MSVC\14.44.35207\bin\Host"/>
 	<target name="printLocations">
+		<echo message="Project Location: &apos;pathVar.WORKSPACE_LOC&apos;=${pathVar.WORKSPACE_LOC}"/>
 		<echo message="Project Location: &apos;pathVar.PARENT_LOC&apos;=${pathVar.PARENT_LOC}"/>
 		<echo message="Project Location: &apos;pathVar.ECLIPSE_HOME&apos;=${pathVar.ECLIPSE_HOME}"/>
 		<echo message="Project Location: &apos;pathVar.PROJECT_LOC&apos;=${pathVar.PROJECT_LOC}"/>
-		<echo message="Project Location: &apos;pathVar.WORKSPACE_LOC&apos;=${pathVar.WORKSPACE_LOC}"/>
 		<echo message="Project Location: &apos;project.LoanAmortService&apos;=${mf.projectLocation.LoanAmortService}"/>
 	</target>
 	<!--  ******************************  -->

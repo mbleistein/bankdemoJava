@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="testJsonBuilder" uuid="f345a756-ac5e-4547-822c-1caf95921649" version="6.0">
+   <settings>
+      <build-precedence-paths>
+         <path enabled="true" name="/testJsonBuilder/src" type="mfpath"/>
+      </build-precedence-paths>
+      <dependent-projects/>
+      <copybook-paths>
+         <path enabled="true" name="/testJsonBuilder" type="mfpath"/>
+         <path enabled="true" name="/testJsonBuilder/src" type="mfpath"/>
+         <path enabled="false" name="/testJsonBuilder/src/testJsonBuilder" type="mfpath"/>
+      </copybook-paths>
+      <configurations default="New Configuration" linkedWith="2017">
+         <configuration commonDirectivesConfigData="" commonDirectivesState="off" description="New Configuration" type="jvm">
+            <targetdir name=".bin"/>
+         </configuration>
+      </configurations>
+      <extra-resource-files/>
+   </settings>
+   <files>
+      <filetype type="cobol">
+         <file compile="true" path="src/testJsonBuilder/Program1.cbl"/>
+      </filetype>
+      <filetype type="cobol.copybook"/>
+      <filetype type="rocket.commondirectives"/>
+      <folders>
+         <folder compile="true" path="src/testJsonBuilder"/>
+      </folders>
+   </files>
+</project>

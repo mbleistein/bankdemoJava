@@ -19,6 +19,15 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/data" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/data/BANKDEMO (127.0.0.1_86) _ ES Administration_files" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/Python" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs2" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/regdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/sysloadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
       </copybook-paths>
       <build-precedence-paths>
          <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
@@ -38,6 +47,15 @@
          <path enabled="true" name="/BankdemoVSAMAscii/system/data" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/system/data/BANKDEMO (127.0.0.1_86) _ ES Administration_files" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/Python" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/logs1" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/logs2" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/rdef" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/regdef" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/sysloadlib" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
       </build-precedence-paths>
       <configurations default="New Configuration" linkedWith="2017">
          <configuration commonDirectivesConfigData="" commonDirectivesState="off" description="New Configuration" type="all_dll">
@@ -117,6 +135,15 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib/reports" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/Python" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs2" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/regdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/sysloadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
       </imscopy-paths>
       <jcl-include-paths>
          <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
@@ -138,6 +165,15 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib/reports" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/Python" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs2" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/regdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/sysloadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
       </jcl-include-paths>
       <asmmacro-paths>
          <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
@@ -159,6 +195,15 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/loadlib/reports" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/Python" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs2" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/regdef" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/sysloadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
       </asmmacro-paths>
       <dependent-projects/>
       <asm_link_settings>

@@ -1,0 +1,6 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<Systems version="1.0">
+    <System connectionip="localhost" id="ST_Enterprise Developer_53611928-7533-4e6e-b176-ab8e21da6390" name="Enterprise Developer" providerID="com.microfocus.awm.ed.systemprovider.defaultModel" remoteSysName="Local" selected="true" userid="mbleistein">
+        <application active="true" id="APPLICATION_dcfb9c53-2724-4487-b9f6-5e66b1985c21" name="Enterprise Development Projects"/>
+    </System>
+</Systems>
