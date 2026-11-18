@@ -8,7 +8,6 @@
          <path enabled="true" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
@@ -28,7 +27,8 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs/xalogs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs/xalogs" type="mfpath"/>
       </copybook-paths>
       <build-precedence-paths>
          <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
@@ -37,7 +37,6 @@
          <path enabled="true" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/system" type="mfpath"/>
-         <path enabled="true" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
@@ -57,7 +56,8 @@
          <path enabled="true" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
          <path enabled="true" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
-         <path enabled="true" name="/BankdemoVSAMAscii/system/Logs/xalogs" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/logs" type="mfpath"/>
+         <path enabled="true" name="/BankdemoVSAMAscii/system/logs/xalogs" type="mfpath"/>
       </build-precedence-paths>
       <configurations default="New Configuration" linkedWith="2017">
          <configuration commonDirectivesConfigData="" commonDirectivesState="off" description="New Configuration" type="all_dll">
@@ -124,7 +124,6 @@
          <path enabled="false" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
@@ -146,7 +145,8 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs/xalogs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs/xalogs" type="mfpath"/>
       </imscopy-paths>
       <jcl-include-paths>
          <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
@@ -155,7 +155,6 @@
          <path enabled="false" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
@@ -177,7 +176,8 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs/xalogs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs/xalogs" type="mfpath"/>
       </jcl-include-paths>
       <asmmacro-paths>
          <path enabled="true" name="/BankdemoVSAMAscii" type="mfpath"/>
@@ -186,7 +186,6 @@
          <path enabled="false" name="/BankdemoVSAMAscii/copybook" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/jcl" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/ctlcards" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/catalog/data" type="mfpath"/>
@@ -208,7 +207,8 @@
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_CICS" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/logs1/PAC_Loadlib_JES" type="mfpath"/>
          <path enabled="false" name="/BankdemoVSAMAscii/system/rdef/backup" type="mfpath"/>
-         <path enabled="false" name="/BankdemoVSAMAscii/system/Logs/xalogs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs" type="mfpath"/>
+         <path enabled="false" name="/BankdemoVSAMAscii/system/logs/xalogs" type="mfpath"/>
       </asmmacro-paths>
       <dependent-projects/>
       <asm_link_settings>
@@ -345,26 +345,29 @@
       <filetype type="lin"/>
       <filetype type="dbd"/>
       <folders>
-         <folder compile="true" path="system/loadlib/com/amcpresales/bankdemo"/>
          <folder compile="true" path="system/loadlib/com_old/amcpresales/bankdemo"/>
          <folder compile="true" path="system/loadlib/com/amcpresales/com/amcpresales"/>
          <folder compile="true" path="system/loadlib/com/amcpresales/com"/>
          <folder compile="true" path="bms"/>
          <folder compile="true" path="system/loadlib/com_old/amcpresales/clients/cobol"/>
-         <folder compile="true" path="system/Logs/xalogs"/>
-         <folder compile="true" path="system/rdef/backup"/>
-         <folder compile="true" path="system/loadlib/com"/>
          <folder compile="true" path="system/loadlib/com_old/amcpresales"/>
-         <folder compile="true" path="system/loadlib/com_old/amcpresales/clients"/>
          <folder compile="true" path="system/loadlib/com/amcpresales/clients/java"/>
-         <folder compile="true" path="system/logs1"/>
+         <folder compile="true" path="system/logs"/>
          <folder compile="true" path="system/loadlib/com_old"/>
          <folder compile="true" path="system/catalog/prc"/>
          <folder compile="true" path="cbl"/>
          <folder compile="true" path="system/loadlib/com/amcpresales"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/clients/cobol"/>
+         <folder compile="true" path="system/loadlib/com/amcpresales/bankdemo"/>
+         <folder compile="true" path="system/Logs"/>
+         <folder compile="true" path="system/logs/xalogs"/>
+         <folder compile="true" path="system/Logs/xalogs"/>
+         <folder compile="true" path="system/rdef/backup"/>
+         <folder compile="true" path="system/loadlib/com"/>
+         <folder compile="true" path="system/loadlib/com_old/amcpresales/clients"/>
+         <folder compile="true" path="system/logs1"/>
          <folder compile="true" path="system/logs2"/>
          <folder compile="true" path="system/rdef"/>
-         <folder compile="true" path="system/loadlib/com/amcpresales/clients/cobol"/>
          <folder compile="true" path="system/loadlib/com_old/amcpresales/clients/java"/>
          <folder compile="true" path="system/loadlib/com/amcpresales/clients"/>
          <folder compile="true" path="jcl"/>
