@@ -1,6 +1,7 @@
 import sys
 import os
 import requests
+import json
 
 def main(args=None):
     if args is None:
@@ -16,13 +17,29 @@ def main(args=None):
     print(f"  ESPY_OUTPUT_ENCODING: {os.environ.get('ESPY_OUTPUT_ENCODING', '(not set)')}")
     print("=== Report Complete ===")
     
-    funcUrl = "https://rclnaejts8.execute-api.us-east-1.amazonaws.com/mbdefaultstage/loanamortLambda"
+    principal = 45000
+    term = 48
+    rate = 5.99
+    
+    jsonString = json.dumps({
+        "principal": principal,
+        "term": term,
+        "rate": float(rate) 
+        })
+    
+# Could use this too and use json=jsonBody in the request.post    
     jsonBody = {
-    "principal": 45000,
-    "term": 48,
-    "rate": 5.99
+    "principal": principal,
+    "term": term,
+    "rate": rate
     }
-    response = requests.post(funcUrl, json=jsonBody)
+# Could use this too and use json=jsonBody in the request.post 
+    
+    print("jsonString: ", jsonString)
+    print("jsonBody: ", jsonBody)
+    funcUrl = "https://rclnaejts8.execute-api.us-east-1.amazonaws.com/mbdefaultstage/loanamortLambda"
+
+    response = requests.post(funcUrl, data=jsonString, headers={"Content-Type": "application/json"})
     print("Status code: ", response.status_code)
     amortdata = response.json()
     if isinstance(amortdata, str):
