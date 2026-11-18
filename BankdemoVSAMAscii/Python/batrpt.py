@@ -20,7 +20,8 @@ def main(args=None):
     principal = 45000
     term = 48
     rate = 5.99
-    
+
+# Serialize into a Json string using json.dumps     
     jsonString = json.dumps({
         "principal": principal,
         "term": term,
