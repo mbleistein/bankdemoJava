@@ -1,0 +1,23 @@
+//PYDEMO   JOB 'PYTHON-DEMO',CLASS=A,MSGCLASS=A,MSGLEVEL=(1,1)
+//*
+//PYPROC  PROC PYSCRIPT=,ARGS='',LOGLVL='+I',REGSIZE='0M',LEPARM=''
+//PYLDM    EXEC PGM=PYLDM,REGION=&REGSIZE,
+//             PARM='&LEPARM/&LOGLVL &PYSCRIPT &ARGS'
+//SYSPRINT DD  SYSOUT=*
+//SYSOUT   DD  SYSOUT=*
+//STDOUT   DD  SYSOUT=*
+//STDERR   DD  SYSOUT=*
+//         PEND
+//*
+//* STEP 1: Invoke as a script
+//*
+//STEP1    EXEC PROC=PYPROC,
+//             PYSCRIPT='batrpt.py',
+//             ARGS='hello world'
+//STDENV   DD  *
+set PYTHONPATH=%BANKROOT%\python;%PYTHONPATH%
+set ESPY_WORKING_DIR=%BANKROOT%\python
+/*
+//MAINARGS DD  *
+extraArg1 extraArg2
+/*

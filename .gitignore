@@ -5,6 +5,7 @@
 loadlib/
 reports/
 **/target/classes
+logs/
 logs1/
 logs2/
 

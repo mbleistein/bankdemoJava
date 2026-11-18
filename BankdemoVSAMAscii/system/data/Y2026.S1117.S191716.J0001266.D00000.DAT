@@ -1,0 +1,58 @@
+     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+     *-*-*  Rocket Software ESJCL  ASCII  JES2 Version ED12.0_010                              *-*-*
+     *-*-*  Copyright (C) Rocket Software 1997-2024. All rights reserved.                      *-*-*
+     *-*-*  Job: 0001266 Name: PYDEMO   User: mfuser   Date: 11/17/26 Time: 19:17:16           *-*-*
+     *-*-*  File: $TXRFDIR/MFUSER19171598.T                                                    *-*-*
+     *-*-*  DSN:                                                                               *-*-*
+     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+   1 //PYDEMO   JOB 'PYTHON-DEMO',CLASS=A,MSGCLASS=A,MSGLEVEL=(1,1)
+   2 //*
+   3 //PYPROC  PROC PYSCRIPT=,ARGS='',LOGLVL='+I',REGSIZE='0M',LEPARM=''
+   4 //PYLDM    EXEC PGM=PYLDM,REGION=&REGSIZE,
+   5 //             PARM='&LEPARM/&LOGLVL &PYSCRIPT &ARGS'
+   6 //SYSPRINT DD  SYSOUT=*
+   7 //SYSOUT   DD  SYSOUT=*
+   8 //STDOUT   DD  SYSOUT=*
+   9 //STDERR   DD  SYSOUT=*
+  10 //         PEND
+  11 //*
+  12 //* STEP 1: Invoke as a script
+  13 //*
+  14 //STEP1    EXEC PROC=PYPROC,
+  15 //             PYSCRIPT='batrpt.py',
+  16 //             ARGS='hello world'
+     ++PYPROC  PROC PYSCRIPT=,ARGS='',LOGLVL='+I',REGSIZE='0M',LEPARM=''
+     ++PYLDM    EXEC PGM=PYLDM,REGION=&REGSIZE,
+     SUBSTITUTION - PGM=PYLDM,REGION=0M,
+     ++             PARM='&LEPARM/&LOGLVL &PYSCRIPT &ARGS'
+     SUBSTITUTION - PARM='/+I batrpt.py hello world'
+     ++SYSPRINT DD  SYSOUT=*
+     ++SYSOUT   DD  SYSOUT=*
+     ++STDOUT   DD  SYSOUT=*
+     ++STDERR   DD  SYSOUT=*
+  17 //STDENV   DD  *
+  21 //MAINARGS DD  *
+**** JCLCM0180I Job ready for execution.
+**** Execution on Server JBANKJCL  Process      14352
+
+     19:17:16 JCLCM0188I JOB  STARTED
+
+     19:17:16 JCLCM0190I STEP STARTED   STEP1.PYLDM
+     19:17:16 JCLCM0303I Program PYLDM loaded from library SYS1.LOADLIB
+     19:17:16 JCLCM0199I Program PYLDM    is COBOL ANS85 ASCII  Big-Endian    NOAMODE.
+     Y2026.S1117.S191716.J0001266.D00001.SYSPRINT                      SYSPRINT
+      C:\USERS\MBLEISTEIN\WORKSPACES\B*16.J0001266.D00001.SYSPRINT.DAT  REMOVED
+     Y2026.S1117.S191716.J0001266.D00002.SYSOUT                        SYSOUT
+      C:\USERS\MBLEISTEIN\WORKSPACES\B*1716.J0001266.D00002.SYSOUT.DAT  SPOOLED
+     Y2026.S1117.S191716.J0001266.D00003.STDOUT                        STDOUT
+      C:\USERS\MBLEISTEIN\WORKSPACES\B*1716.J0001266.D00003.STDOUT.DAT  SPOOLED
+     Y2026.S1117.S191716.J0001266.D00004.STDERR                        STDERR
+      C:\USERS\MBLEISTEIN\WORKSPACES\B*1716.J0001266.D00004.STDERR.DAT  SPOOLED
+     Y2026.S1117.S191716.J0001266.D00005.STDENV                        STDENV
+      C:\USERS\MBLEISTEIN\WORKSPACES\B*1716.J0001266.D00005.STDENV.DAT  DELETED
+     Y2026.S1117.S191716.J0001266.D00006.MAINARGS                      MAINARGS
+      C:\USERS\MBLEISTEIN\WORKSPACES\B*16.J0001266.D00006.MAINARGS.DAT  DELETED
+---> 19:17:17 JCLCM0191I STEP ENDED     STEP1.PYLDM - COND CODE 0100
+
+---> 19:17:17 JCLCM0182I JOB  ENDED   - COND CODE 0100
